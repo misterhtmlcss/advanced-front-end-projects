@@ -1,0 +1,22 @@
+
+//colors:
+$calc-background: rgba(181, 255, 233, 1); //dark grey
+$textcalc-background: rgba(68, 69, 69, 1); //green
+$AC: rgba(197, 224, 216, 1); // red-ish clear numbers
+$operators: rgba(201, 201, 201, 1);
+$equal: rgba(206, 171, 177, 1);
+
+
+
+section {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.calc {
+  background-color: #B5FFE9;
+  height: 450px;
+  width: 375px;
+  border: 1px sandybrown solid;
+}
