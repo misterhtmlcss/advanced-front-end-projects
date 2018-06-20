@@ -29,11 +29,11 @@ function clock() {
     startWorking();
     sessionCount = sessionCount - 1;
     alerts.textContent = ''
-    countDown.textContent = 'Get to Work for: 0:00'
+    countDown.textContent = '0:00'
   } else {
     sessionCount = 5
     endTime.textContent = ''
-    countDown.textContent = 'Get to Work for: 0:00'
+    countDown.textContent = '0:00'
     alerts.textContent = `Click 'Start' button to start again`
   }
 }
@@ -51,7 +51,7 @@ function startWorking (){
       clearInterval(timer);
       startBreak(sessionTime);
     }
-    getTime('Get to Work for: ', clockTimeRemaining)
+    getTime(clockTimeRemaining)
   }, 1000);
 }
 
@@ -69,16 +69,16 @@ function startBreak(sessionTime) {
       clock()
     }
 
-    getTime('Time to relax for: ', breakTimeRemaining)
+    getTime(breakTimeRemaining)
 
   }, 1000);
 
 }
 /* getTime and displayEndTime are courtesy of JS30 @ Wes Bos: Thank you for the amazing video on clocks! */
-function getTime (label, seconds) {
+function getTime (seconds) {
   const minutes = Math.floor(seconds/60);
   const remainderSeconds = seconds % 60;
-  const display = `${label} ${minutes}:${remainderSeconds < 10 ? "0":""}${remainderSeconds}`
+  const display = `${minutes}:${remainderSeconds < 10 ? "0":""}${remainderSeconds}`
   document.title = display
   countDown.textContent = display
 }
@@ -93,9 +93,9 @@ function displayEndTime (timestamp) {
 
 function resetClock() {
   sessionCount = 5
-  countDown.textContent = 'Get to Work for: 0:00'
+  countDown.textContent = '0:00'
   endTime.textContent = ''
-  alerts.textContent = `Resetting Pomodoro ${sessionCount}`
+  alerts.textContent = `Pomodoro Reset! Start Again`
   clearInterval(timer);
   clearInterval(breakTimer);
   console.log(sessionCount)

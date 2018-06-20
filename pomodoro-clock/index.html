@@ -10,18 +10,22 @@
 <body>
   <div id="container">
     <h1 class="title">FreeCodeCamp Pomodoro</h1>
-    <div id="box">
+    <div class="box">
       <input id="work" type="number" value="25"/>
       <input id="break" type="number" value="5"/>
+    </div>
+    <div class="box">
       <button id='startBtn'>Start</button>
       <button id='killClock'>Stop</button>
       <button id='resetClock'>Reset</button>
     </div>
-    <div id="activity">
+    <div>
       <h1 class="title">Countdown</h1>
-      <div id="countdown">0:00</div>
-      <div id="endTime"></div>
-      <div id="alerts"></div>
+      <div class="counter">
+        <div id="countdown" class='biggest'>0:00</div>
+        <div id="endTime"></div>
+        <div id="alerts"></div>
+      </div>
     </div>
   </div>
   <script src="index.js"></script>
