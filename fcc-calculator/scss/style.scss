@@ -1,0 +1,140 @@
+* { margin: 1px; padding: 0; box-sizing: border-box; }
+
+html, body {
+	background-color: whitesmoke;
+	font-size: 25px;
+	font-family: Helvetica, sans-serif;
+	font-weight: 900;
+	position: relative;
+}
+#container {
+	position: absolute;
+	top: -5px;
+	left: -50px;
+	width: 300px;
+}
+
+.cover {
+	text-align: center;
+	width: 100%;
+	margin-left: 3em;
+	display: flex;
+	flex-direction: column;
+}
+.cover > h1 { 
+	padding-top: 10px;
+	border-top: 2px black solid;
+	margin-top: 30px;
+	font-size: 1.6rem;
+	color: rgba(0,0,0,0.6);
+	text-shadow: 3px 3px 3px rgba(255,255,255,0.8);
+}
+.cover > p { 
+	font-size: 1rem;
+}
+
+p:nth-child(2), #second {
+	color: whitesmoke;
+	margin-top: 6px;
+	margin-bottom: 3px;
+	background-color: red;
+	padding: 5px 0;
+	text-shadow: 1px 1px 2px #191919;
+}
+
+.minus-padding {
+	margin-bottom: -50px;
+	padding: 5px 0;
+	color: rgba(0,0,0,0.6);
+	text-shadow: 3px 3px 3px rgba(255,255,255,0.8);
+ 	border-bottom: 2px black solid;
+}
+
+.calculator {
+	display: flex;
+	flex-direction: column;
+  	justify-content: center;
+ 	margin: 3em;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.head, .btnSection {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+
+#second {
+	display: none;
+}
+
+#displayField {
+	height: 50px;
+	font-size: 1rem;
+	padding: 10px;
+	padding-bottom: 30px;
+	text-align: right;
+	border: 1px black solid;
+	border-radius: 10px 10px 0 0;
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.3),
+					-1px -1px 3px 1px rgba(0,0,0,0.3);
+}
+
+.row {	
+	display: flex;
+	height: 50px; 
+}
+
+.row > .red {
+	border-radius: 0 0 10px 10px;
+	height: 100px;
+	background-color: red;
+	color: white;
+	font-size: 3em;
+	text-shadow: 2px 2px 5px black;
+}
+.col {
+	text-align: center;
+	border: 1px black solid;
+	//margin: 2px;
+}
+
+.dub {
+	flex-grow: 3;
+}
+.solo {
+	flex-grow: 1;
+}
+.symbols {
+	flex-basis: 50px;
+	color: whitesmoke;
+	background-color: darkblue;
+	text-shadow: 2px 2px 4px #191919;
+}
+.num {
+	background-color: #209cee;
+	color: whitesmoke;
+	text-shadow: 1px 1px 4px #191919;
+}
+.clear {
+	background-color: lightgreen;
+	color: whitesmoke;	
+	text-shadow: 1px 1px 4px black;
+}
+.center { padding-top: 8px; }
+
+.blinking-cursor {
+	font-weight: 200;
+	line-height: 30px;
+  	animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}

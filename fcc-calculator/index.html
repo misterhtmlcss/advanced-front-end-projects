@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FCC Calculator</title>
+      <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="container">
+	<div class="cover">
+		<h1>FreeCodeCamp <br />Calculator</h1>
+		<!-- First is just instructions for user input -->
+		<p id="first" class='first-line'>Only use these characters</p>
+		<p class="minus-padding"> 0-9 , * , / , - , + , = </p>
+	</div>
+	<div class="calculator">
+		<section class="head">
+			<div id="displayField">
+				<span class="blinking-cursor">|</span>
+				<span id="results" class="numbers"></span></div>
+		</section>
+		<div class="btnSection">
+			<div class="row row-top" id="center clear">
+				<div id="allClear" class="center col dub clear">AC</div>
+				<div id="clearOne" class="center col dub clear">CE</div>
+			</div>
+			<div class="row row1">
+				<div id="seven" class="btn center col num solo" data-value="7">7</div>
+				<div id="eight" class="btn center col num solo" data-value="8">8</div>
+				<div id="nine" class="btn center col num solo" data-value="9">9</div>
+				<div id="divide" class="btn center col solo symbols" data-value="/">/</div>
+			</div>
+			<div class="row row2">
+				<div id="four" class="btn center col num solo"  data-value="4">4</div>
+				<div id="five" class="btn center col num solo" data-value="5">5</div>
+				<div id="six" class="btn center col num solo"  data-value="6">6</div>
+				<div id="multiply" class="btn center col solo symbols" data-value="x">x</div>
+			</div>
+			<div class="row row3">
+				<div id="one" class="btn center col num solo" data-value="1">1</div>
+				<div id="two" class="btn center col num solo" data-value="2">2</div>
+				<div id="three" class="btn center col num solo" data-value="3">3</div>
+				<div id="subtract" class="btn center col solo symbols" data-value="-">-</div>
+			</div>
+			<div class="row">
+				<div id="zero" class="btn center col num dub" data-value="0">0</div>
+				<div id="decimal" class="btn center col solo symbols" data-value=".">.</div>
+				<div id="add" class="btn center col solo symbols" data-value="+">+</div>
+			</div>
+			<div class="row">
+				<div id="equals" class="col dub red" data-value="=">=</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
