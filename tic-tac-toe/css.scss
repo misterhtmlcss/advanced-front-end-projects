@@ -1,0 +1,90 @@
+// Variables
+$blue: #2196F3;
+
+html, body {
+  background-color: $blue;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: white;
+  height: 100%;
+}
+.wrapper {
+  min-height: 480px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.footnote {
+  height: 50px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-shadow: 1px 1px 1px black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 500px;
+  padding-top: 30px;
+  //padding-left: 10px;
+  grid-auto-rows: 100px;
+  border-radius: 90%;
+}
+.grid-item {
+  padding: 25px;
+  font-size: 3rem;
+  text-align: center;
+  text-shadow: 1px 1px 2px lightgray;
+  &:hover{
+    color: $blue;
+    text-shadow: 1px 1px 1px black;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.grid-container-btn {
+  display: grid;
+  height: 50px;
+  grid-template-columns: auto;
+  //grid-gap: 10px;
+  max-width: 500px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  //padding-left: 10px;
+}
+.grid-btn {
+  background-color: rgba(255, 255,255, 0.8);
+  padding: 20px;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgb(255, 255,255);
+}
+
+[data-location] {
+  border: 1px white dotted;
+}
+
+.letter-y {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-color: rgba($blue, 0.8);
+  &:hover {
+    color: whitesmoke;
+    background-color: rgba($blue, 0.6);
+  }
+}
+
+.letter-x {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-color: rgba(red, 0.8);
+  &:hover{
+    color: whitesmoke;
+    background-color: rgba(red, 0.6);
+  }
+}
+
+//Utilities
