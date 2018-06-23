@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="wrapper">
+  <div class="score">Score: 0</div>
   <div class="grid-container">
     <div class="grid-item letter-x" data-location="1"></div>
     <div class="grid-item letter-y" data-location="2"></div>
@@ -27,7 +28,35 @@
 <div class="footnote">Built with CSS Grid and Flexbox by misterhtmlcss</div>
 
 
-<script src="index.js"></script>
+<!-- <script src="index.js"></script> -->
+<script>
+const score = document.querySelector('.score')
+const boxes = Array.from(document.querySelectorAll('.grid-item'))
+let playerOneScore, playerAiScore;
+let playerOneSelections = [];
+let playerAiSelections = [];
+const resetBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//let boardh = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+//let boardv =[[1, 4, 7], [2, 5, 8], [3, 6, 9]];
+
+// Detect a user click then record into an array which location
+// Check a boxes that are clicked
+boxes.forEach(box => { box.addEventListener('click',getSelectionValue)})
+
+// Value of box selected
+function getSelectionValue (val){
+  return val.target.dataset.location
+  //console.log(val.target.dataset.location) // Test function
+}
+
+// AI Functions
+function randomNumber(){
+  return Math.floor(Math.random() * Math.floor(10));
+}
+
+
+</script>
 </body>
 </html>
 <!-- Emmet construction help - h$[title=item$]{Header $}*3 -->
