@@ -1,31 +1,99 @@
+// Counter to keep track of current game level
+const maxGameLevel = 20;
+let gameLevel = 0;
+let gameSequence = [];
+let userSequence = [];
+const start = getClick('start');
+const reset = getClick('reset');
+const counter = getClick('counter');
+const keys = document.querySelectorAll('.keys')
+const audio = document.querySelectorAll('audio')
+//console.log(keys)
+
 /*
-LIVE Pair Programmed with Teo.... & Roger Kondrat according to the FCC Academic Honesty rules:
-https://www.freecodecamp.org/academic-honesty
+function init(){
+  createSequence()
+  loadGame ()
+}
 
-Youtube Instructions Used from the Legacy Certificate:
-https://www.youtube.com/watch?v=tAPut8a47bA
+function loadGame (){
+  if(gameLevel >= 0 || gameLevel < 20){
+    gameLevel++
+  } else {
+    // Should we make this a reset?
+    gameLevel = 0
+  }
+}
+
+
+function toStartNewLevel () {
+
+}
+
+function toCheckArr (){
+  if (userSequence == gameSequence) {
+    // Do something
+  } else {
+    // Do something else
+  }
+}
+
+function appendPlaying (){
+
+}
+function endThenReset (){
+
+}
 */
+function playAudio (e) {
+  const audioId = e.target.dataset.key
+  const calledAudio = document.querySelector(`audio[data-key="${audioId}"]`)
+  calledAudio.currentTime = 0; // Will rewind sound for multiple clicks
+  calledAudio.play()
+}
 
-//User Story: I am presented with a random series of button presses.
-//User Story: If I press the wrong button, I am notified that I have done so, and that series of button presses starts again to remind me of the pattern so I can try again.
 
-/*
-Features
-Game:
-- Need Holding array for game
-- Need to reset game
-- Need to keep track of the users 'level' of play
 
-AI
-- Random Number Generator for 'AI' to select keys
-- No same select as last key function ex. AI doesn't select blue again for the next choice. We don't have to do that, but it seems like a good add.
+// Listeners
+keys.forEach((key) => {
+  key.addEventListener('click', function (e) {
+    //console.log(e)
+    key.classList.add('playing')
+    playAudio(e)
+  });
+});
 
-User
-- User clicks start button to begin game
-- User clicks reset button to end current game and remove score
 
-- User on first round gets first 3 colours
-- User receives a new key each round added to the last round
--
+// Just a prototype trying to make sounds from events
+start.addEventListener('click', function(e){
+  //loadGame()
+  //appendPlaying()
+  playAudio(e)
+})
+// Just a prototype trying to make sounds from events
+reset.addEventListener('click', function(e){
+  //endThenReset()
+  playAudio(e)
+})
 
-*/
+// Utilities
+// Creates random number array for Game
+function createSequence () {
+  for(let i = 0; i < maxGameLevel; i++){
+    gameSequence.push(getRandomKey());
+  }
+}
+
+// Random key generator
+function getRandomKey () {
+  return Math.floor(Math.random() * 4)
+};
+
+// getElementId
+function getClick (id) {
+  return document.getElementById(id);
+}
+
+// ------ Start Game ------- //
+// Initialize Game
+//init()

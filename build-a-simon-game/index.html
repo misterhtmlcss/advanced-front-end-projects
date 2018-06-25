@@ -18,18 +18,28 @@
           -Reset
           -Level (Counter)
       -->
-      <button class="btn start">Start</button>
-      <button class="btn reset">Reset</button>
-      <div class="counter">Level: 0</div>
+      <div class="btns">
+        <button class="btn" id="start" data-key="5">Start</button>
+        <button class="btn" id="reset" data-key="6">Reset</button>
+      </div>
+      <div id="counter">Level: 0</div>
     </div>
   </div>
   <div class="bottom"> <!-- Below the mid-point on the screen -->
     <!-- Remove labels ex Blue once styled -->
-    <div class="keys key1" data-key="1"></div>
+    <div class="keys key1 playing" data-key="1"></div>
     <div class="keys key2" data-key="2"></div>
     <div class="keys key3" data-key="3"></div>
     <div class="keys key4" data-key="4"></div>
   </div>
 </div>
+<audio data-key="1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+<audio data-key="2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+<audio data-key="3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+<audio data-key="4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+<audio data-key="5" src="/mp3/failure.mp3"></audio> <!-- Tumbone mocking -->
+
+<audio data-key="6" src="/mp3/phone-off-hook.mp3"></audio><!-- Nooooo -->
+<script src="index.js"></script>
 </body>
 </html>
