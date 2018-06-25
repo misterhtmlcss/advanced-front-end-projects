@@ -9,7 +9,8 @@
 </head>
 <body>
 <div class="wrapper">
-  <div class="score">Score: 0</div>
+  <div class="round">Round: 0</div>
+  <div class="score">Your Score: 0 || Computer Score: 0</div>
   <div class="grid-container">
     <div class="grid-item letter-x" data-location="1"></div>
     <div class="grid-item letter-y" data-location="2"></div>
@@ -30,15 +31,18 @@
 
 <!-- <script src="index.js"></script> -->
 <script>
-const score = document.querySelector('.score')
-const boxes = Array.from(document.querySelectorAll('.grid-item'))
-let playerOneScore, playerAiScore;
-let playerOneSelections = [];
-let playerAiSelections = [];
-const resetBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 //let boardh = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 //let boardv =[[1, 4, 7], [2, 5, 8], [3, 6, 9]];
+const round = document.querySelector('.round')
+const score = document.querySelector('.score')
+const boxes = Array.from(document.querySelectorAll('.grid-item'))
+const resetBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let playerOneScore, playerAiScore, found;
+let gameRound = 0;
+let board = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Change values for Selection
+let roundWonBy = 0 // Who won the round; Tie:0, HumanWin:1, AIWin: -1
+let winner = false; // After 3 rounds; overall winner is declared
+let tempClickValue; // Value of last user selection goes here.
 
 // Detect a user click then record into an array which location
 // Check a boxes that are clicked
@@ -46,16 +50,64 @@ boxes.forEach(box => { box.addEventListener('click',getSelectionValue)})
 
 // Value of box selected
 function getSelectionValue (val){
-  return val.target.dataset.location
-  //console.log(val.target.dataset.location) // Test function
+  tempClickValue = val.target.dataset.location // Click data- value
+  if(val.isTrusted === true){
+    testCall(`Player clicked this value: ${tempClickValue}`)
+  } else {
+    testCall(`Computer clicked this value: ${randomNumber()}`)
+  }
 }
+
 
 // AI Functions
-function randomNumber(){
-  return Math.floor(Math.random() * Math.floor(10));
+
+
+// This function needs to iterate through both it's previous selections for the AI and the user selections and then resolve a choice.
+function aiBoxPicker () {
+  //if()
 }
 
+// Game tools
+function keepScore () {  // Wins collected after each round
+  if (gameRound > 0 || gameRound <=5) {
+// For this function it receives the winer identity and then increments based on that identity
+    round.innerHTML = //`${***WINNER e.g. Player or AI}: ${playerOneScore++|| playerAiScore++}`
+  }
+}
 
+function roundWinner () { // Calls both keepScore and trackRounds to increment their counters
+  if (winner) {
+    trackRounds()
+  }
+}
+
+function trackRounds () { // Keep track of the round being played
+  if (gameRound > 0 || gameRound <=5) {
+    round.innerHTML = `Round: ${gameRound++}`;
+  }
+}
+// Generates Computer moves
+function randomNumber(){
+  let choice = Math.floor(Math.random() * Math.floor(10))
+
+
+  found = board.find(function(choice) {
+    if (board[choice] === !NaN) {
+      console.log("found a number")
+    }
+});
+
+
+
+  if (choice === )
+  return ;
+}
+
+// Utility Scripts for testing
+
+function testCall (...args) {
+  console.log(...args)
+}
 </script>
 </body>
 </html>
