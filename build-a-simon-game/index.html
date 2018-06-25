@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simon Game</title>
+  <link rel="stylesheet" href="css.css">
+</head>
+<body>
+<div class="container">
+  <div class="top">
+    <h1 class="title">Welcome to our Simple Simon Game</h1> <!-- Title above the Central Console -->
+    <div class="command-module">
+      <!--
+        Circle? with buttons:
+          -Start
+          -Reset
+          -Level (Counter)
+      -->
+      <button class="btn start">Start</button>
+      <button class="btn reset">Reset</button>
+      <div class="counter">Level: 0</div>
+    </div>
+  </div>
+  <div class="bottom"> <!-- Below the mid-point on the screen -->
+    <!-- Remove labels ex Blue once styled -->
+    <div class="keys key1" data-key="1"></div>
+    <div class="keys key2" data-key="2"></div>
+    <div class="keys key3" data-key="3"></div>
+    <div class="keys key4" data-key="4"></div>
+  </div>
+</div>
+</body>
+</html>
