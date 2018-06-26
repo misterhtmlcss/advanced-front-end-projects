@@ -15,6 +15,7 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
 .top {
   height: 50vh;
   display: flex;
@@ -22,24 +23,25 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
 .bottom {
-  height: 50vh;;
+  height: 50vh;
   display: flex;
   justify-content: space-evenly;
 }
+
 .command-module {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .btns {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-// Utilities
 
 .btn {
   width: 100px;
@@ -56,18 +58,21 @@ html, body {
   height: 200px;
   width: 60px;
   border-radius: 10%;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.6)
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 }
-.key1 {
+
+#blue-key {
   background-color: blue;
 }
-.key2 {
+
+#red-key {
   background-color: red;
 }
 
-.key3 {
+#green-key {
   background-color: green;
 }
-.key4 {
+
+#yellow-key {
   background-color: goldenrod;
 }
