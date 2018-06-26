@@ -1,0 +1,38 @@
+/*
+LIVE Pair Programmed with Teo.... & Roger Kondrat according to the FCC Academic Honesty rules:
+https://www.freecodecamp.org/academic-honesty
+
+Youtube Instructions Used from the Legacy Certificate:
+https://www.youtube.com/watch?v=tAPut8a47bA
+
+Sound Catalogue:
+- https://s3.amazonaws.com/freecodecamp/simonSound1.mp3
+- https://s3.amazonaws.com/freecodecamp/simonSound2.mp3
+- https://s3.amazonaws.com/freecodecamp/simonSound3.mp3
+- https://s3.amazonaws.com/freecodecamp/simonSound4.mp3
+
+Features
+Game:
+- Need array for key sequences
+- Need to be able to reset game key (array) to 0
+- Need to keep track of the users 'level' of play
+- Need to regulate speed of game
+- Non-Strict Mode: Every time the user makes a mistake, a notification is displayed and the previous key sequence starts again.
+- Strict Mode: user clicks the wrong button, the game restarts from the beginning.
+- {Optional} Need to increase speed after the 5th, 9th, 13th levels
+- The game ends if the user completes 20 levels successfully
+
+AI
+- Random Number Generator for 'AI' to select keys
+- No same select as last key function ex. AI doesn't select blue again for the next choice. We don't have to do that, but it seems like a good add.
+
+
+User
+- User clicks start button to begin game
+-  User clicks reset button to end current game and remove score {optional separate button}
+- User starts with random start key
+- User receives a random key selection from the computer that is then added to the total from the previous round.
+
+
+
+
