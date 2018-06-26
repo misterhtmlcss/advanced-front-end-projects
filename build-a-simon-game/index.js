@@ -1,38 +1,41 @@
 // Game Variables
-const maxGameLevel = 20;
-let gameLevel = 0;
-let gameSequence = [];
-let userSequence = [];
 const colorPairs = {
   'blue-key': 0,
   'red-key': 1,
   'green-key': 2,
   'yellow-key': 3
 }
+const maxGameLevel = 20;
+let gameLevel = 0;
+let gameSequence = [];
+let userSequence = [];
 
-// Game Event Listeners
+// Game Elements
 const start = getClick('start'),
-  reset = getClick('reset'),
-  counter = getClick('counter'),
-  keys = getClick('keys-list'),
-  audio = document.querySelectorAll('audio');
+      reset = getClick('reset'),
+      counter = getClick('counter'),
+      keys = getClick('keys-list'),
+      audio = document.querySelectorAll('audio');
 
-
-function init() {
+// Load Game: IIFE runs to create gameSequence Array for game onload
+(function () {
   createGameSequence();
   loadGame();
-  playGame();
-}
+})();
 
 function loadGame() {
-  gameLevel = 0;
-  counter.innerHTML = `Level: ${gameLevel + 1}`;
+
 }
 
+
+
+
+
 // Needs a lot of work still!!
+// This made no sense to me, so I tore it up. SOrry!
 function playGame() {
-  // console.log('firstseq', gameSequence[gameLevel]);
-  // console.log('level', gameLevel);
+  console.log('firstseq', gameSequence[gameLevel]);
+  console.log('level', gameLevel);
   for (let i = 0; i <= gameLevel; i++) {
     document.querySelector(`audio[data-key="${gameSequence[i] + 1}"]`).play();
     gameLevel++;
@@ -57,55 +60,63 @@ function appendPlaying() {
 
 }
 function endThenReset() {
+  gameLevel = 0;
+  counter.innerHTML = `Level: ${gameLevel + 12}`;
+  // innerHTML (ABOVE): For Resetting ONLY, already defaults as =1
+  userSequence = []; //Resetting user Sequence
 
 }
 
+// Simon Interactive Keys Listener
+keys.addEventListener('click', e => {
+  const key = document.querySelector(`[data-key="${getDataId(e)}"]`)
+  // Prevent the listener from registering keys inside the parent but not inside the keys themselves
+  if (e.target.className === 'keys') {
+    userSequence.push(colorPairs[getDataId(e)]); // Unified approaches around Data-key
+    toggleClass(key, 'playing');
+    playAudio(e);
+  }
+});
+
+// StartButton and ResetButton Listners
+// Just a prototype trying to make sounds from events
+start.addEventListener('click', playGame);
+// Reset works
+reset.addEventListener('click', endThenReset)
+
+// Utilities
+// Adds class and removes class. Needs a element data-key and the class to work
+function toggleClass (id, elClass) {
+  id.classList.toggle(elClass)
+  setTimeout(() => {
+    id.classList.toggle(elClass)
+  }, 300);
+}
+
+// Play audio when there are game interactions
 function playAudio(e) {
-  const audioId = e.target.dataset.key;
-  const calledAudio = document.querySelector(`audio[data-key="${audioId}"]`);
+  const calledAudio = document.querySelector(`audio[data-key="${getDataId(e)}"]`);
   calledAudio.currentTime = 0; // Will rewind sound for multiple clicks
   calledAudio.play();
 }
 
-// Listeners
-keys.addEventListener('click', e => {
-  // Prevent the listener from registering keys inside the parent but not inside the keys themselves
-  if (e.target.className === 'keys') {
-    const key = e.target;
-    // Match the color keys with their respective numbers and push to the user array
-    userSequence.push(colorPairs[key.id]);
-    key.classList.add('playing');
-    playAudio(e);
-    setTimeout(() => {
-      key.classList.remove('playing');
-    }, 100);
-  }
-});
-
-
-// Just a prototype trying to make sounds from events
-start.addEventListener('click', e => {
-  init();
-  //appendPlaying()
-  playAudio(e);
-  console.log('seq', gameSequence);
-})
-// // Just a prototype trying to make sounds from events
-// reset.addEventListener('click', e => {
-//   //endThenReset()
-//   playAudio(e);
-// })
-
-// Utilities
 // Creates random number array for Game
 function createGameSequence() {
-  gameSequence = [];
-  for (let i = 0; i < maxGameLevel; i++) {
-    gameSequence.push(getRandomKey());
+  let i=0
+  let currentNum;
+  while(i< maxGameLevel){
+    currentNum = getRandomKey()
+    gameSequence.push(currentNum)
+    i++
   }
 }
 
-// Random key generator
+// Gets Data-Key for HTML element access
+function getDataId (e){
+  return e.target.dataset.key;
+}
+
+// Random number generator between 1-4
 function getRandomKey() {
   return Math.floor(Math.random() * 4);
 };
@@ -114,8 +125,3 @@ function getRandomKey() {
 function getClick(id) {
   return document.getElementById(id);
 }
-
-// ------ Start Game ------- //
-// Initialize Game
-
-// console.log(gameLevel);
