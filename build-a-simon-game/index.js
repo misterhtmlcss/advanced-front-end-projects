@@ -1,36 +1,51 @@
-// Counter to keep track of current game level
+// Game Variables
 const maxGameLevel = 20;
 let gameLevel = 0;
 let gameSequence = [];
 let userSequence = [];
-const start = getClick('start');
-const reset = getClick('reset');
-const counter = getClick('counter');
-const keys = document.querySelectorAll('.keys')
-const audio = document.querySelectorAll('audio')
-//console.log(keys)
-
-/*
-function init(){
-  createSequence()
-  loadGame ()
+const colorPairs = {
+  'blue-key': 0,
+  'red-key': 1,
+  'green-key': 2,
+  'yellow-key': 3
 }
 
-function loadGame (){
-  if(gameLevel >= 0 || gameLevel < 20){
-    gameLevel++
-  } else {
-    // Should we make this a reset?
-    gameLevel = 0
+// Game Event Listeners
+const start = getClick('start'),
+  reset = getClick('reset'),
+  counter = getClick('counter'),
+  keys = getClick('keys-list'),
+  audio = document.querySelectorAll('audio');
+
+
+function init() {
+  createGameSequence();
+  loadGame();
+  playGame();
+}
+
+function loadGame() {
+  gameLevel = 0;
+  counter.innerHTML = `Level: ${gameLevel + 1}`;
+}
+
+// Needs a lot of work still!!
+function playGame() {
+  // console.log('firstseq', gameSequence[gameLevel]);
+  // console.log('level', gameLevel);
+  for (let i = 0; i <= gameLevel; i++) {
+    document.querySelector(`audio[data-key="${gameSequence[i] + 1}"]`).play();
+    gameLevel++;
   }
+  // document.querySelector(`audio[data-key="${gameSequence[gameLevel] + 1}"]`).play()
+  // console.log('firstseqsound', document.querySelector(`audio[data-key="${gameSequence[gameLevel] + 1}"]`));
 }
 
-
-function toStartNewLevel () {
+function toStartNewLevel() {
 
 }
 
-function toCheckArr (){
+function toCheckArr() {
   if (userSequence == gameSequence) {
     // Do something
   } else {
@@ -38,62 +53,69 @@ function toCheckArr (){
   }
 }
 
-function appendPlaying (){
+function appendPlaying() {
 
 }
-function endThenReset (){
+function endThenReset() {
 
 }
-*/
-function playAudio (e) {
-  const audioId = e.target.dataset.key
-  const calledAudio = document.querySelector(`audio[data-key="${audioId}"]`)
+
+function playAudio(e) {
+  const audioId = e.target.dataset.key;
+  const calledAudio = document.querySelector(`audio[data-key="${audioId}"]`);
   calledAudio.currentTime = 0; // Will rewind sound for multiple clicks
-  calledAudio.play()
+  calledAudio.play();
 }
-
-
 
 // Listeners
-keys.forEach((key) => {
-  key.addEventListener('click', function (e) {
-    //console.log(e)
-    key.classList.add('playing')
-    playAudio(e)
-  });
+keys.addEventListener('click', e => {
+  // Prevent the listener from registering keys inside the parent but not inside the keys themselves
+  if (e.target.className === 'keys') {
+    const key = e.target;
+    // Match the color keys with their respective numbers and push to the user array
+    userSequence.push(colorPairs[key.id]);
+    key.classList.add('playing');
+    playAudio(e);
+    setTimeout(() => {
+      key.classList.remove('playing');
+    }, 100);
+  }
 });
 
 
 // Just a prototype trying to make sounds from events
-start.addEventListener('click', function(e){
-  //loadGame()
+start.addEventListener('click', e => {
+  init();
   //appendPlaying()
-  playAudio(e)
+  playAudio(e);
+  console.log('seq', gameSequence);
 })
-// Just a prototype trying to make sounds from events
-reset.addEventListener('click', function(e){
-  //endThenReset()
-  playAudio(e)
-})
+// // Just a prototype trying to make sounds from events
+// reset.addEventListener('click', e => {
+//   //endThenReset()
+//   playAudio(e);
+// })
 
 // Utilities
 // Creates random number array for Game
-function createSequence () {
-  for(let i = 0; i < maxGameLevel; i++){
+function createGameSequence() {
+  gameSequence = [];
+  for (let i = 0; i < maxGameLevel; i++) {
     gameSequence.push(getRandomKey());
   }
 }
 
 // Random key generator
-function getRandomKey () {
-  return Math.floor(Math.random() * 4)
+function getRandomKey() {
+  return Math.floor(Math.random() * 4);
 };
 
 // getElementId
-function getClick (id) {
+function getClick(id) {
   return document.getElementById(id);
 }
 
 // ------ Start Game ------- //
 // Initialize Game
-//init()
+
+// console.log(gameLevel);
