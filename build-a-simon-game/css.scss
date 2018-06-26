@@ -63,23 +63,28 @@ html, body {
 }
 
 // Data-key IDs for working with JS functions
-[data-key="1"]{
+#keys-list > [data-key="1"]{
   background-color: blue;
 }
 
-[data-key="2"] {
+#keys-list > [data-key="2"] {
   background-color: red;
 }
 
-[data-key="3"] {
+#keys-list > [data-key="3"] {
   background-color: green;
 }
 
-[data-key="4"] {
+#keys-list > [data-key="4"] {
   background-color: goldenrod;
 }
 
+// Font decisions
 .title {
   margin: 20px;
   text-align: center;
+}
+.user-levels {
+  font-size: 1.3rem;
+  margin: 10px;
 }
