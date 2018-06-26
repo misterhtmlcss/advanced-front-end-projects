@@ -22,15 +22,15 @@
         <button class="btn" id="start" data-key="5">Start</button>
         <button class="btn" id="reset" data-key="6">Reset</button>
       </div>
-      <div id="counter">Level: 0</div>
+      <div id="counter">Level: --</div>
     </div>
   </div>
-  <div class="bottom"> <!-- Below the mid-point on the screen -->
+  <div class="bottom" id="keys-list"> <!-- Below the mid-point on the screen -->
     <!-- Remove labels ex Blue once styled -->
-    <div class="keys key1 playing" data-key="1"></div>
-    <div class="keys key2" data-key="2"></div>
-    <div class="keys key3" data-key="3"></div>
-    <div class="keys key4" data-key="4"></div>
+    <div class="keys" id="blue-key" data-key="1"></div>
+    <div class="keys" id="red-key" data-key="2"></div>
+    <div class="keys" id="green-key" data-key="3"></div>
+    <div class="keys" id="yellow-key" data-key="4"></div>
   </div>
 </div>
 <audio data-key="1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>

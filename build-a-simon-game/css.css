@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  width: 100%;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom {
+  height: 50vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.command-module {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 100px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.playing {
+  transform: scale(1.3);
+  border: 0 1px 0 0 solid grey;
+}
+
+.keys {
+  height: 200px;
+  width: 60px;
+  border-radius: 10%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+#blue-key {
+  background-color: blue;
+}
+
+#red-key {
+  background-color: red;
+}
+
+#green-key {
+  background-color: green;
+}
+
+#yellow-key {
+  background-color: goldenrod;
+}
+/*# sourceMappingURL=css.css.map */
