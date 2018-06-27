@@ -58,12 +58,15 @@ html, body {
   border-radius: 10%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
               -1px -1px 2px rgba(0, 0, 0, 0.6);
-
+  // Important
+  // :hover harms the important css .playing activity
+  /*
   &:hover {
     transform: scale(1.03);
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
                 -1px -1px 2px rgba(0, 0, 0, 0.6);
   }
+  */
 }
 
 // Buttons
