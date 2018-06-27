@@ -15,12 +15,17 @@
     <div class="command-module">
       <div class="btns">
         <div class="btn" id="start" data-key="5">Start</div>
-        <div class="btn" id="strict" data-key="6">Strict</div>
+        <label class="switch" id="strict" data-key="6">
+          <!-- <label class="switch"></label> -->
+            <input type="checkbox">
+            <span class="slider"></span>
+
+        </label>
       </div>
-      <div id="counter" class="user-level hide">Level: 1</div>
+      <div id="counter" class="user-level disable">Level: 1</div>
     </div>
   </div>
-  <div class="bottom hide" id="keys-list">
+  <div class="bottom disable" id="keys-list">
     <div class="keys" id="blue-key" data-key="1"></div>
     <div class="keys" id="red-key" data-key="2"></div>
     <div class="keys" id="green-key" data-key="3"></div>
