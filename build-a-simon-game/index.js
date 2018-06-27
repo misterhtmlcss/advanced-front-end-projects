@@ -1,4 +1,11 @@
-/* Game Variables */
+/* Game HTML Elements */
+const start = getClick('start'),
+      reset = getClick('reset'),
+      counter = getClick('counter'),
+      keys = getClick('keys-list'),
+      audio = document.querySelectorAll('audio');
+
+/* Game JS Variables */
 const colorPairs = {
   'blue-key': 0,
   'red-key': 1,
@@ -7,21 +14,18 @@ const colorPairs = {
 }
 const maxGameLevel = 20;
 let gameLevel = 0;
-let gameStrict = false;
+let gameStrict = false;  // We use this to change the game from Strict to normal
+// Read up on what is Strict and what is not strict.
 let gameSequence = [];
 let userSequence = [];
 
-/* Game Elements */
-const start = getClick('start'),
-      reset = getClick('reset'),
-      counter = getClick('counter'),
-      keys = getClick('keys-list'),
-      audio = document.querySelectorAll('audio');
-
-
-/* Game Functions */
+/* Game JS Functions */
 // Initialization of Game function
+function initGame (){
+  createGameSequence();
+}
 function playGame() {
+
   if(gameLevel > 0){
     if(gameLevel <= 5){
       console.log("level 3 or less", gameLevel)
@@ -37,6 +41,7 @@ function playGame() {
 }
 
 function toStartNewLevel() {
+  userSequence = []; //Each new level restarts the users input
   /*pseudo code:
   When the userSequence reaches the length equal to the gameLevel,
   then initiate a beep to start a new round.
@@ -44,19 +49,28 @@ function toStartNewLevel() {
   Then it invites the user ${your turn?} to mirror the gameSequence to the correct length.
 
   ***** NOTE: BETTER ALTERNATIVE Method *****
-  SEE README.md for further notes
-
+  Use a counter instead, use the counter with indexOf to confirm each number individually against the gameSequence array. This allows us to remove our need for userSequence and only leverage gameSequence.
+  */
 }
+/*
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+var citrus = fruits.slice(1, 3);  slice is non-mutable use on gameSequence
+*/
 
-function toCheckArr() {
-  for(let i = 0; i <= gameLevel; i++){
-    if(gameStrict === false){
-      if (userSequence[i] === gameSequence[i]){
-        toStartNewLevel() // Kick off another level with beeps et al if correct
-      } else {
-        // Play audio (negative sound)
-        // clear userSequence and change user-level to show 'Want to try again?'
-        // User should have to either interact by clicking a button to try again or computer can allow them to try again.
+
+function toCheckArr(userInput, key) {
+  console.log('userInput: ', userInput)  // testing inbound results
+  playAudio(key)
+  if(userInput){
+    for(let i = 0; i <= gameLevel; i++){
+      if(gameStrict === false){
+        if (userInput[i] === gameSequence[i]){
+          toStartNewLevel() // Kick off another level with beeps et al if correct
+        } else {
+          // Play audio (negative sound)
+          // clear userSequence and change user-level to show 'Want to try again?'
+          // User should have to either interact by clicking a button to try again or computer can allow them to try again.
+        }
       }
     }
   }
@@ -64,44 +78,35 @@ function toCheckArr() {
 
 // Simon Interactive Keys Listener
 keys.addEventListener('click', e => {
-  const key = document.querySelector(`[data-key="${getDataId(e)}"]`)
-  // Prevent the listener from registering keys inside the parent but not inside the keys themselves
-  if (e.target.className === 'keys') {
-    userSequence.push(Number(getDataId(e))); // Unified approaches around Data-key
-    toggleClass(key, 'playing');
-    playAudio(e);
-  }
+  // "key" is the HTML element being pressed
+  const key = getDataId(e)
+  userSequence.push(key); // Unified approaches around Data-key
+  toggleClass(key, 'playing');
+  toCheckArr(userSequence, key)
+
 });
-
-
-// StartButton and ResetButton Listners
-// Just a prototype trying to make sounds from events
-start.addEventListener('click', playGame)
-// Reset works
-reset.addEventListener('click', endThenReset)
 
 
 /* Utilities */
 // Adds class and removes class. Needs a element data-key and the class to work
 function toggleClass (id, elClass) {
-  id.classList.toggle(elClass)
+  const keyHTML = document.querySelector(`[data-key="${id}"]`)
+  keyHTML.classList.toggle(elClass)
   setTimeout(() => {
-    id.classList.toggle(elClass)
+    keyHTML.classList.toggle(elClass)
   }, 300);
 }
 
 // Reset Game
 function endThenReset() {
   gameLevel = 0;
-  // innerHTML (Below): For Resetting ONLY, already defaults as =1
   counter.innerHTML = `Level: ${gameLevel + " replace me"}`;
   userSequence = []; //Resetting user Sequence
-  //console.log(gameLevel, counter, userSequence)//Tested.All is as it should be here
 }
 
 // Play audio when there are game interactions
 function playAudio(e) {
-  const calledAudio = document.querySelector(`audio[data-key="${getDataId(e)}"]`);
+  const calledAudio = document.querySelector(`audio[data-key="${e}"]`);
   calledAudio.currentTime = 0; // Will rewind sound for multiple clicks
   calledAudio.play();
 }
@@ -116,11 +121,11 @@ function createGameSequence() {
     i++
   }
 }
-createGameSequence();
+
 
 // Gets Data-Key for HTML element access
 function getDataId (e){
-  return e.target.dataset.key;
+  return Number(e.target.dataset.key);
 }
 
 // Random number generator between 1-4
@@ -132,3 +137,9 @@ function getRandomKey() {
 function getClick(id) {
   return document.getElementById(id);
 }
+
+// StartButton and ResetButton Listners
+// Just a prototype trying to make sounds from events
+start.addEventListener('click', playGame)
+// Reset works
+reset.addEventListener('click', endThenReset)
