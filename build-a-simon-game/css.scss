@@ -127,5 +127,7 @@ html, body {
 
 // Utility
 .hide {
-  display: none;
+  //display: none;
+  pointer-events: none;
+  cursor: default;
 }
