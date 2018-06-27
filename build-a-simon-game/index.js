@@ -44,8 +44,7 @@ function toStartNewLevel() {
   Then it invites the user ${your turn?} to mirror the gameSequence to the correct length.
 
   ***** NOTE: BETTER ALTERNATIVE Method *****
-  Use a counter instead, use the counter with indexOf to confirm each number individually against the gameSequence array. This allows us to remove our need for userSequence and only leverage gameSequence.
-  */
+  SEE README.md for further notes
 
 }
 
