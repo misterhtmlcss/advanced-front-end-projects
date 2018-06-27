@@ -1,4 +1,4 @@
-// Game Variables
+/* Game Variables */
 const colorPairs = {
   'blue-key': 0,
   'red-key': 1,
@@ -7,64 +7,60 @@ const colorPairs = {
 }
 const maxGameLevel = 20;
 let gameLevel = 0;
+let gameStrict = false;
 let gameSequence = [];
 let userSequence = [];
 
-// Game Elements
+/* Game Elements */
 const start = getClick('start'),
       reset = getClick('reset'),
       counter = getClick('counter'),
       keys = getClick('keys-list'),
       audio = document.querySelectorAll('audio');
 
-// Load Game: IIFE runs to create gameSequence Array for game onload
-(function () {
-  createGameSequence();
-  loadGame();
-})();
 
-function loadGame() {
-
-}
-
-
-
-
-
-// Needs a lot of work still!!
-// This made no sense to me, so I tore it up. SOrry!
+/* Game Functions */
+// Initialization of Game function
 function playGame() {
-  console.log('firstseq', gameSequence[gameLevel]);
-  console.log('level', gameLevel);
-  for (let i = 0; i <= gameLevel; i++) {
-    document.querySelector(`audio[data-key="${gameSequence[i] + 1}"]`).play();
-    gameLevel++;
+  if(gameLevel > 0){
+    if(gameLevel <= 5){
+      console.log("level 3 or less", gameLevel)
+    }
+    if (gameLevel > 5 && gameLevel < 9){
+      console.log('gameLevel 5 to 8', gameLevel)
+    }
+    if(gameLevel > 20) {
+      console.log('Too much stuff')
+    }
   }
-  // document.querySelector(`audio[data-key="${gameSequence[gameLevel] + 1}"]`).play()
-  // console.log('firstseqsound', document.querySelector(`audio[data-key="${gameSequence[gameLevel] + 1}"]`));
+  gameLevel++
 }
 
 function toStartNewLevel() {
+  /*pseudo code:
+  When the userSequence reaches the length equal to the gameLevel,
+  then initiate a beep to start a new round.
+  New round iterates through a spliced version of gameSequence until it is completed the full pattern until the userSequence.length + 1.
+  Then it invites the user ${your turn?} to mirror the gameSequence to the correct length.
+
+  ***** NOTE: BETTER ALTERNATIVE Method *****
+  Use a counter instead, use the counter with indexOf to confirm each number individually against the gameSequence array. This allows us to remove our need for userSequence and only leverage gameSequence.
+  */
 
 }
 
 function toCheckArr() {
-  if (userSequence == gameSequence) {
-    // Do something
-  } else {
-    // Do something else
+  for(let i = 0; i <= gameLevel; i++){
+    if(gameStrict === false){
+      if (userSequence[i] === gameSequence[i]){
+        toStartNewLevel() // Kick off another level with beeps et al if correct
+      } else {
+        // Play audio (negative sound)
+        // clear userSequence and change user-level to show 'Want to try again?'
+        // User should have to either interact by clicking a button to try again or computer can allow them to try again.
+      }
+    }
   }
-}
-
-function appendPlaying() {
-
-}
-function endThenReset() {
-  gameLevel = 0;
-  counter.innerHTML = `Level: ${gameLevel + 12}`;
-  // innerHTML (ABOVE): For Resetting ONLY, already defaults as =1
-  userSequence = []; //Resetting user Sequence
-
 }
 
 // Simon Interactive Keys Listener
@@ -72,25 +68,36 @@ keys.addEventListener('click', e => {
   const key = document.querySelector(`[data-key="${getDataId(e)}"]`)
   // Prevent the listener from registering keys inside the parent but not inside the keys themselves
   if (e.target.className === 'keys') {
-    userSequence.push(colorPairs[getDataId(e)]); // Unified approaches around Data-key
+    userSequence.push(Number(getDataId(e))); // Unified approaches around Data-key
     toggleClass(key, 'playing');
     playAudio(e);
   }
 });
 
+
 // StartButton and ResetButton Listners
 // Just a prototype trying to make sounds from events
-start.addEventListener('click', playGame);
+start.addEventListener('click', playGame)
 // Reset works
 reset.addEventListener('click', endThenReset)
 
-// Utilities
+
+/* Utilities */
 // Adds class and removes class. Needs a element data-key and the class to work
 function toggleClass (id, elClass) {
   id.classList.toggle(elClass)
   setTimeout(() => {
     id.classList.toggle(elClass)
   }, 300);
+}
+
+// Reset Game
+function endThenReset() {
+  gameLevel = 0;
+  // innerHTML (Below): For Resetting ONLY, already defaults as =1
+  counter.innerHTML = `Level: ${gameLevel + " replace me"}`;
+  userSequence = []; //Resetting user Sequence
+  //console.log(gameLevel, counter, userSequence)//Tested.All is as it should be here
 }
 
 // Play audio when there are game interactions
@@ -110,6 +117,7 @@ function createGameSequence() {
     i++
   }
 }
+createGameSequence();
 
 // Gets Data-Key for HTML element access
 function getDataId (e){
