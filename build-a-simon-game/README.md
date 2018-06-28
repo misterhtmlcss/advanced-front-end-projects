@@ -1,3 +1,1 @@
-***** NOTE: BETTER ALTERNATIVE Method *****
-
-Use a counter instead of comparing arrays.
+Will break all the JS into (I think) CommonJS modules tomorrow to make it easier to focus on the core SSG game functionality.
