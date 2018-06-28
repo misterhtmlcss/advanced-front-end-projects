@@ -1,7 +1,7 @@
-$primary-green: rgba(0,128,0,0.8);
-$primary-red: rgba(255, 0, 0, 0.8);
-$primary-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+//Global variables
+@import "_variables.scss";
 
+// Main structure
 html, body {
   min-height: 100vh;
   width: 100%;

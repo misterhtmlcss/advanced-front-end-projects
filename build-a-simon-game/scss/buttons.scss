@@ -1,5 +1,6 @@
-// Utility
+@import "_variables.scss";
 
+// Utilities
 // Disable the keys and Strict from being clicked until startButton clicked
 .disable {
   pointer-events: none;
