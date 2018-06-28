@@ -61,15 +61,6 @@ html, body {
   border-radius: 10%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
               -1px -1px 2px rgba(0, 0, 0, 0.6);
-  // Important
-  // :hover harms the important css .playing activity
-  /*
-  &:hover {
-    transform: scale(1.03);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
-                -1px -1px 2px rgba(0, 0, 0, 0.6);
-  }
-  */
 }
 
 // Buttons
@@ -115,69 +106,4 @@ html, body {
   background-color: goldenrod;
 }
 
-// Font decisions
-.title {
-  margin: 20px;
-  text-align: center;
-}
-.user-level {
-  font-size: 1.3rem;
-  margin: 10px;
-}
 
-// Utility
-// Disable the keys and Strict from being clicked until startButton clicked
-.disable {
-  //display: none;
-  pointer-events: none;
-  cursor: default;
-}
-
-// Toggle Switch
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 100px;
-  height: 60px;
-}
-.switch input {display:none;}
-
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color:$primary-red;
-  transition: .6s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 50px;
-  width: 50px;
-  left: 10px;
-  bottom: 4px;
-  background-color: white;
-  transition: .6s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-// Pointer!
-.switch, .keys, #start {
-  cursor: pointer;
-}
