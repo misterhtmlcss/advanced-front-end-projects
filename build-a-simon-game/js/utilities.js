@@ -8,14 +8,17 @@ function userInput (keyNumId, userArray) {
 
 // Adds class and removes class. Needs a element data-key and the class to work
 function toggleClass (id) {
-  const keyHTML = document.querySelector(`[data-key="${id}"]`)
-  keyHTML.classList.toggle('playing')
+  const keyHTML = document.querySelector(`[data-key="${id}"]`).classList
+  keyHTML.toggle('playing')
   setTimeout(() => {
-    keyHTML.classList.toggle('playing')
+    keyHTML.toggle('playing')
+    //keyHTML.classList.toggle('playing')
   }, 300);
 }
 // Function hide keys until StartButton pressed
 function makeClickableKeys () {
+  const testKeys = document.querySelector(`#keys-list`)
+  console.log(testKeys, testKeys.classList)
   const keys = document.querySelector(`#keys-list`)
   keys.classList.remove('disable')
   counter.classList.remove('disable')
@@ -25,10 +28,10 @@ function makeClickableKeys () {
 function endThenReset() {
   //if(gameOn === false){
     gameLevel = 0;
-    counter.textContent = `Level: 10`;
+    counter.textContent = `Level: `;
     help.textContent = 'WTF'
     userSequence = []; //Resetting user Sequence
-    soundPlayer(document.querySelector(`audio[data-key="6"]`), 1500)
+    //soundPlayer(document.querySelector(`audio[data-key="6"]`), 1500)
   //}
 }
 
@@ -65,7 +68,6 @@ function createGameSequence() {
   }
 }
 
-
 // Gets Data-Key for HTML element access
 function getDataId (e){
   return Number(e.target.dataset.key);
@@ -75,8 +77,3 @@ function getDataId (e){
 function getRandomKey() {
   return Math.floor(Math.random() * 4);
 };
-
-// getElementId
-function getClick(id) {
-  return document.getElementById(id);
-}
