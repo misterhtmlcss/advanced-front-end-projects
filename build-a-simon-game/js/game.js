@@ -23,7 +23,8 @@ function playGame() {
   to the correct length.
 */
 function toStartNewLevel() {
-  userSequence = []; //Each new level restarts the users input
+  //userSequence = [];
+  //Each new level restarts the users input
 }
 
 /*

@@ -30,30 +30,19 @@ function initGame (){
   //Simon Says Keys aren't show until StartButton is Clicked
   if(gameOn === false) {
     gameOn = true;
-    start.textContent = 'Reset'
     makeClickableKeys()
     createGameSequence();
   } else if(gameLevel < 20 && gameOn !== false) {
     // User reset game
+    console.log('inside two initGame')
     endThenReset()
   } else {
-    console.log(gameLevel, gameOn , 'testing Init game')
+    console.log(gameLevel, gameOn , 'Init game "else"')
   }
 }
 
 // Simon Interactive Keys Listener
 keys.addEventListener('click', keysPressed)
-
-
-
-/* keys.addEventListener('click', e => {
-  if (e.target.className === 'keys') {
-    keyPressed = getDataId(e) // Actual Number ID for keyPressed
-    userSequence.push(keyPressed); // Unified approaches around Data-key
-    userInput(keyPressed, userSequence)
-    //console.log(gameSequence);
-  }
-}); */
 
 // StartButton and ResetButton Listners
 // Just a prototype trying to make sounds from events
