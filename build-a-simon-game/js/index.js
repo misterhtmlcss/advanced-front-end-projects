@@ -7,7 +7,6 @@ const start = getClick('start'),
       keys = getClick('keys-list'),
       audio = document.querySelectorAll('audio');
 
-
 /* Game JS Variables */
 const colorPairs = { //Key colours
   'blue-key': 0,
