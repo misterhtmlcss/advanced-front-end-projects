@@ -1,47 +1,26 @@
 
 /* Utilities */
 // Manage user input
-function userInput (keyNumId, userArray) {
-  toggleClass(keyNumId);
-  toCheckArr(userArray, keyNumId)
-}
-
-// Adds class and removes class. Needs a element data-key and the class to work
-function toggleClass (id) {
-  const keyHTML = queryClick(`[data-key="${id}"]`)
-  keyHTML.classList.toggle('playing')
-  setTimeout(() => {
-    keyHTML.classList.toggle('playing')
-  }, 300);
-}
-// Function hide keys until StartButton pressed
-function makeClickableKeys () {
-  const keys = queryClick(`#keys-list`)
-  keys.classList.remove('disable')
-  counter.classList.remove('disable')
+function keysPressed(e) {
+  if (e.target.className === 'keys') {
+    keyPressed = getDataId(e) // Actual Number ID for keyPressed
+    userSequence.push(keyPressed); // Unified approaches around Data-key
+    toggleClass(keyPressed);
+    toCheckArr(userSequence, keyPressed)
+    //console.log(gameSequence);
+  }
 }
 
 // Reset Game
 function endThenReset() {
   //if(gameOn === false){
     gameLevel = 0;
-    counter.textContent = `Level: 10`;
-    help.textContent = 'WTF'
+    start.textContent = 'Start'
+    counter.textContent = 'Level: 0';
+    help.textContent = 'Click start to play again! :) '
     userSequence = []; //Resetting user Sequence
-    soundPlayer(queryClick(`audio[data-key="6"]`), 1500)
+    soundPlayer(queryClick(`audio[data-key="6"]`), 1000)
   //}
-}
-
-// Play audio when there are game interactions
-function soundPlayer(keySoundId, timeOut){
-  if(timeOut === undefined){
-    timeOut = 2000;
-  }
-  keySoundId.currentTime = 0; // Will rewind sound for multiple clicks
-  keySoundId.play(); //Play() Using Audio Method
-  setTimeout(() => {
-    keySoundId.pause();
-  }, timeOut);
 }
 
 

@@ -29,7 +29,7 @@ function toStartNewLevel() {
 /*
 Thinking about using Filter and/or slice during user Audit of selections.
 var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
-var citrus = fruits.slice(1, 3);  slice is non-mutable use on gameSequence
+var citrus = fruits.slice(1, 3);  slice is immutable use on gameSequence
 */
 function toCheckArr(userInput, key) {
   console.log('userInput: ', userInput)  // testing inbound results
