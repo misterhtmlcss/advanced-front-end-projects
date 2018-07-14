@@ -22,20 +22,37 @@ let gameSequence = [];
 let userSequence = [];
 let keyPressed;
 
+//woohoo this works!! now I just need to use it some how ;)
+let changeState = {
+  gameState: false,
+  play: function () {
+    return this.gameState = true;
+  },
+  stop: function () {
+    return this.gameState = false;
+  },
+  reset: function () {
+    this.gameState = false;
+    return endThenReset();
+  }
+}
+
+
 /* Game JS Functions */
 // Initialization of Game function
-function initGame (){ //Simon Says Keys aren't show until StartButton is Clicked
+function initGame (){
+  //Keys aren't clickable until StartButton is Clicked
   if(gameOn === false) {
+    //start of game setup
     gameOn = true;
-    console.log('gameOn', gameOn);
     start.textContent = 'Reset'
     makeClickableKeys()
     createGameSequence();
-  } else if(gameLevel < 20 && gameOn !== false) { // User reset game
-      endThenReset()
-      console.log('This game is being reset', 'gameOn', gameOn)
+  } else if(gameLevel < 20 && gameOn !== false) {
+    // User reset game
+    endThenReset()
   } else {
-      console.log('testing Init game')
+    console.log('testing Init game')
   }
 }
 

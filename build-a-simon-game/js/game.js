@@ -33,7 +33,7 @@ var citrus = fruits.slice(1, 3);  slice is non-mutable use on gameSequence
 */
 function toCheckArr(userInput, key) {
   console.log('userInput: ', userInput)  // testing inbound results
-  soundPlayer(document.querySelector(`audio[data-key="${key}"]`))
+  soundPlayer(queryClick(`audio[data-key="${key}"]`))
   if(userInput){
     for(let i = 0; i <= gameLevel; i++){
       if(gameStrict === false){

@@ -8,7 +8,7 @@ function userInput (keyNumId, userArray) {
 
 // Adds class and removes class. Needs a element data-key and the class to work
 function toggleClass (id) {
-  const keyHTML = document.querySelector(`[data-key="${id}"]`)
+  const keyHTML = queryClick(`[data-key="${id}"]`)
   keyHTML.classList.toggle('playing')
   setTimeout(() => {
     keyHTML.classList.toggle('playing')
@@ -16,7 +16,7 @@ function toggleClass (id) {
 }
 // Function hide keys until StartButton pressed
 function makeClickableKeys () {
-  const keys = document.querySelector(`#keys-list`)
+  const keys = queryClick(`#keys-list`)
   keys.classList.remove('disable')
   counter.classList.remove('disable')
 }
@@ -28,7 +28,7 @@ function endThenReset() {
     counter.textContent = `Level: 10`;
     help.textContent = 'WTF'
     userSequence = []; //Resetting user Sequence
-    soundPlayer(document.querySelector(`audio[data-key="6"]`), 1500)
+    soundPlayer(queryClick(`audio[data-key="6"]`), 1500)
   //}
 }
 
@@ -38,7 +38,7 @@ function soundPlayer(keySoundId, timeOut){
     timeOut = 2000;
   }
   keySoundId.currentTime = 0; // Will rewind sound for multiple clicks
-  keySoundId.play();
+  keySoundId.play(); //Play() Using Audio Method
   setTimeout(() => {
     keySoundId.pause();
   }, timeOut);
@@ -79,4 +79,7 @@ function getRandomKey() {
 // getElementId
 function getClick(id) {
   return document.getElementById(id);
+}
+function queryClick(queryId) {
+  return document.querySelector(queryId)
 }
