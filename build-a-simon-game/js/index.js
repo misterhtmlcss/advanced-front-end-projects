@@ -40,10 +40,8 @@ let changeState = {
 
 /* Game JS Functions */
 // Initialization of Game function
-function initGame (){
-  //Keys aren't clickable until StartButton is Clicked
+function initGame (){ //Simon Says Keys aren't show until StartButton is Clicked
   if(gameOn === false) {
-    //start of game setup
     gameOn = true;
     start.textContent = 'Reset'
     makeClickableKeys()
