@@ -7,20 +7,21 @@ function keysPressed(e) {
     userSequence.push(keyPressed); // Unified approaches around Data-key
     toggleClass(keyPressed);
     toCheckArr(userSequence, keyPressed)
+    if (gameOn === true) {
+      start.textContent = 'Reset'
+    }
     //console.log(gameSequence);
   }
 }
 
 // Reset Game
 function endThenReset() {
-  //if(gameOn === false){
     gameLevel = 0;
     start.textContent = 'Start'
-    counter.textContent = 'Level: 0';
+    counter.textContent = 'Level: 1';
     help.textContent = 'Click start to play again! :) '
     userSequence = []; //Resetting user Sequence
     soundPlayer(queryClick(`audio[data-key="6"]`), 1000)
-  //}
 }
 
 
