@@ -5,7 +5,8 @@ const start = getClick('start'),
       counter = getClick('counter'),
       help = getClick('help'),
       keys = getClick('keys-list'),
-      audio = document.querySelectorAll('audio');
+      audio = document.querySelectorAll('audio'),
+      strict = getClick('setting');
 
 /* Game JS Variables */
 const colorPairs = { //Key colours
@@ -14,10 +15,11 @@ const colorPairs = { //Key colours
   'green-key': 2,
   'yellow-key': 3
 }
-const maxGameLevel = 20;
+const maxGameLevel = 5;
 let gameLevel = 0; // Game 'rounds' if that helps
-let gameStrict = false;  // We use this to change the game from Strict to normal
+let gameStrict = "1";  // We use this to change the game from Strict to normal
 let gameOn = false;
+let simonReTries = getSimonTries();
 
 // Read up on what is Strict and what is not strict.
 let gameSequence = []; //Computer fills this on 'startBtn'
@@ -26,18 +28,24 @@ let keyPressed;
 
 /* Game JS Functions */
 // Initialization of Game function
-function initGame (){
-  //Simon Says Keys aren't show until StartButton is Clicked
+function initGame(){
+//Simon Says Keys aren't show until StartBtn is clicked
   if(gameOn === false) {
+    //console.clear()
     gameOn = true;
     makeClickableKeys()
     createGameSequence();
-  } else if(gameLevel < 20 && gameOn !== false) {
-    // User reset game
-    console.log('inside two initGame')
-    endThenReset()
+    help.textContent = 'Game On!!';
+    console.log('gameSequence', gameSequence);
+    setTimeout(() => {
+      simonPlayer()
+    }, 1000);
+  } else if(gameLevel < 20 && gameOn === true){
+      // Reseting game due to losing
+      endThenReset()
   } else {
-    console.log(gameLevel, gameOn , 'Init game "else"')
+    console.log('init Else');
+    counter.textContent = `Level: ${gameLevel}`
   }
 }
 
@@ -48,4 +56,4 @@ keys.addEventListener('click', keysPressed)
 // Just a prototype trying to make sounds from events
 start.addEventListener('click', initGame)
 // Strict Button: Needs function
-//strict.addEventListener('click', endThenReset)
+strict.addEventListener('click', strictPressed)

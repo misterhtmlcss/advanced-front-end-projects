@@ -1,18 +1,3 @@
-function playGame() {
-  if(gameLevel > 0){
-    if(gameLevel <= 5){
-      console.log("level 3 or less", gameLevel)
-    }
-    if (gameLevel > 5 && gameLevel < 9){
-      console.log('gameLevel 5 to 8', gameLevel)
-    }
-    if(gameLevel > 20) {
-      console.log('Too much stuff')
-    }
-  }
-  gameLevel++
-}
-
 /*
   pseudo code:
   When the userSequence reaches the length equal to the gameLevel,
@@ -22,32 +7,114 @@ function playGame() {
   Then it invites the user ${your turn?} to mirror the gameSequence
   to the correct length.
 */
-function toStartNewLevel() {
-  //userSequence = [];
-  //Each new level restarts the users input
+function startNextLevel() {
+  gameLevel++
+  if(userSequence.length !== maxGameLevel){
+    counter.textContent = `Level: ${gameLevel}`
+    simonPlayer()
+    //console.log('startNextLevel - > Level:',gameLevel);
+  } else {
+    counter.textContent = `Level: ${gameLevel}`
+    help.textContent = 'You Won! We are resetting your game.......'
+    setTimeout(() => {
+      initGame()
+    }, 3000);
+  }
 }
 
-/*
-Thinking about using Filter and/or slice during user Audit of selections.
-var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
-var citrus = fruits.slice(1, 3);  slice is immutable use on gameSequence
-*/
-function toCheckArr(userInput, key) {
-  console.log('userInput: ', userInput)  // testing inbound results
+function checkNum(key) {
   soundPlayer(queryClick(`audio[data-key="${key}"]`))
-  if(userInput){
-    for(let i = 0; i <= gameLevel; i++){
-      if(gameStrict === false){
-        if (userInput[i] === gameSequence[i]){
-          toStartNewLevel() // Kick off another level with beeps et al if correct
+  if(key){
+    if(userSequence.length <= gameSequence.length){
+      if (key !== gameSequence[gameLevel]){
+        if(gameStrict === "-1"){
+          console.log('gameover:', key, gameSequence[gameLevel])
+          help.textContent = 'Game Over! Would you like to try again? If so, click Reset and then Start to begin.'
+          start.textContent = 'Game Over'
+          setTimeout(() => {
+            initGame()
+          }, 2000);
         } else {
-          /*
-          Play audio (negative sound)
-          clear userSequence and change user-level to show 'Want to try again?'
-          User should have to either interact by clicking a button to try again
-          or computer can allow them to try again. */
+          // Play Simon's portion again
+          // Call play simon function.
+          simonHelper()
         }
+      } else {
+        userSequence.push(key);
+        startNextLevel()
       }
     }
   }
 }
+
+function gameEnds() {
+  help.textContent = 'Game Over! Would you like to try again? If so, click Reset and then Start to begin.'
+  start.textContent = 'Game Over'
+  setTimeout(() => {
+    initGame()
+  }, 2000);
+}
+
+function simonHelper() {
+  if(simonReTries === 0){
+    gameEnds()
+  } else {
+    simonPlayer()
+    simonReTries--
+    help.innerHTML = `You have only so many chances. <br /> Chances Remaining: ${simonReTries+1}`
+  }
+}
+
+function simonPlayer() {
+  const position = userSequence.length;
+  const playListArr = gameSequence.slice(0, position+1);  // Need plus 1 to advance the game for the user.
+  const playListSize = playListArr.length
+  let idx = 0
+
+  if (userSequence.length === 0){
+    // Play first key
+    const firstKey = gameSequence[0]
+    soundPlayer(queryClick(`audio[data-key="${firstKey}"]`))
+    toggleClass(firstKey)
+    // Wait for user to click.
+    //User needs to click button
+  } else {
+
+    /* function doSetTimeout(idx) {
+      setTimeout(() => {
+        soundPlayer(queryClick(`audio[data-key="${playListArr[idx]}"]`))
+        //toggleClass(playListArr[idx])
+      }, 2000);
+    }
+    for (idx; idx < playListSize; idx++){
+      doSetTimeout(idx);
+      //console.log('forloop', idx, playListSize);
+    } */
+    function timer (idx){
+      setInterval(()=>{
+        soundPlayer(queryClick(`audio[data-key="${playListArr[idx]}"]`))
+        idx++
+        if(idx === playListSize){
+        }
+      }, 2000)
+      clearInterval()
+    }
+    timer()
+    //console.log('simonPlayer:', position, playListArr, playListSize)
+  }
+}
+
+
+
+
+
+
+/* function loop (idx, playList) {
+    setTimeout(function () {
+      soundPlayer(queryClick(`audio[data-key="${i}"]`))
+      toggleClass(i)
+      if (i++) loop(i);      //  decrement i and call loop again if i > 0
+    }, 1000)
+ });
+ loop(i, playList)
+*/

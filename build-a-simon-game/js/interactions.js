@@ -11,9 +11,14 @@ function toggleClass (id) {
 
 // Function hide keys until StartButton pressed
 function makeClickableKeys () {
-  const keys = queryClick(`#keys-list`)
-  keys.classList.remove('disable')
-  counter.classList.remove('disable')
+  if (gameOn === true) {
+    const keys = queryClick(`#keys-list`)
+    keys.classList.remove('disable')
+    counter.classList.remove('disable')
+    start.textContent = 'Reset'
+    start.style.backgroundColor = 'red'
+    //help.textContent = '';
+  }
 }
 
 
@@ -22,9 +27,12 @@ function soundPlayer(keySoundId, timeOut){
   if(timeOut === undefined){
     timeOut = 2000;
   }
+  console.log('before',keySoundId.currentTime)
   keySoundId.currentTime = 0; // Will rewind sound for multiple clicks
+
   keySoundId.play(); //Play() Using Audio Method
   setTimeout(() => {
     keySoundId.pause();
+    console.log('setTimeOut',keySoundId.currentTime)
   }, timeOut);
 }

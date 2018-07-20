@@ -2,26 +2,53 @@
 /* Utilities */
 // Manage user input
 function keysPressed(e) {
+  //console.log('keypressed: ', e);
   if (e.target.className === 'keys') {
     keyPressed = getDataId(e) // Actual Number ID for keyPressed
-    userSequence.push(keyPressed); // Unified approaches around Data-key
+    //userSequence.push(keyPressed); // Unified approaches around Data-key
     toggleClass(keyPressed);
-    toCheckArr(userSequence, keyPressed)
-    if (gameOn === true) {
-      start.textContent = 'Reset'
+    checkNum(keyPressed)
+  }
+}
+
+function strictPressed() {
+  if(gameOn !== true){
+    if(gameStrict === "1"){
+      gameStrict = "-1"
+      strict.textContent = "Strict"
+      strict.style.backgroundColor = '#ff0000'
+      console.log ('boo', gameStrict)
+    } else {
+      gameStrict = "1"
+      strict.textContent = "Easy"
+      strict.style.backgroundColor = 'blue'
+      console.log('woohoo', gameStrict)
     }
-    //console.log(gameSequence);
+  } else {
+    setTimeout(() => {
+      help.style.display = 'none';
+    }, 2000);
+    help.textContent = 'Too late to change! Wait or Reset'
   }
 }
 
 // Reset Game
 function endThenReset() {
+    gameOn = false;
     gameLevel = 0;
     start.textContent = 'Start'
     counter.textContent = 'Level: 1';
     help.textContent = 'Click start to play again! :) '
-    userSequence = []; //Resetting user Sequence
-    soundPlayer(queryClick(`audio[data-key="6"]`), 1000)
+    userSequence = []; //Resetting user and game Sequence
+    gameSequence = [];
+    simonReTries = getSimonTries();
+    keys.classList.add('disable')
+    counter.classList.add('disable')
+    start.style.backgroundColor = ''
+    //Bring back player once testing complete
+    //Console log for now
+    console.log('Reset: console logging that soundPlayer() was called' );
+    //soundPlayer(queryClick(`audio[data-key="6"]`), 250)
 }
 
 
@@ -30,7 +57,7 @@ function createGameSequence() {
   let i=0
   let currentNum;
   while(i < maxGameLevel){
-    currentNum = getRandomKey()
+    currentNum = getRandomNum()
     gameSequence.push(currentNum)
     i++
   }
@@ -40,7 +67,7 @@ function createGameSequence() {
         setTimeout(() => {
           help.style.display = 'none';
         }, 2000);
-        playGame()
+        //playGame()
       }
   }
 }
@@ -52,8 +79,8 @@ function getDataId (e){
 }
 
 // Random number generator between 1-4
-function getRandomKey() {
-  return Math.floor(Math.random() * 4);
+function getRandomNum() {
+  return Math.floor(Math.random() * 4)+1;
 };
 
 // getElementId
@@ -63,3 +90,8 @@ function getClick(id) {
 function queryClick(queryId) {
   return document.querySelector(queryId)
 }
+
+function getSimonTries() {
+  return 5
+}
+
