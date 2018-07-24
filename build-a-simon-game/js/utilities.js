@@ -2,7 +2,6 @@
 /* Utilities */
 // Manage user input
 function keysPressed(e) {
-  //console.log('keypressed: ', e);
   if (e.target.className === 'keys') {
     keyPressed = getDataId(e) // Actual Number ID for keyPressed
     //userSequence.push(keyPressed); // Unified approaches around Data-key
@@ -12,17 +11,15 @@ function keysPressed(e) {
 }
 
 function strictPressed() {
-  if(gameOn !== true){
-    if(gameStrict === "1"){
-      gameStrict = "-1"
+  if(gameOn === false){ //Game must not have started yet
+    if(gameStrict === false){
+      gameStrict = true //Strict is on!
       strict.textContent = "Strict"
       strict.style.backgroundColor = '#ff0000'
-      console.log ('boo', gameStrict)
     } else {
-      gameStrict = "1"
+      gameStrict = false
       strict.textContent = "Easy"
       strict.style.backgroundColor = 'blue'
-      console.log('woohoo', gameStrict)
     }
   } else {
     setTimeout(() => {
@@ -60,15 +57,6 @@ function createGameSequence() {
     currentNum = getRandomNum()
     gameSequence.push(currentNum)
     i++
-  }
-  if (gameOn === true){
-      if(gameSequence.length === 20){
-        help.textContent = `Game on!!`;
-        setTimeout(() => {
-          help.style.display = 'none';
-        }, 2000);
-        //playGame()
-      }
   }
 }
 

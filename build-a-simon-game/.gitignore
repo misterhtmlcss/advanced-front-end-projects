@@ -2,3 +2,4 @@
 *archive
 /scss/*.css*
 .eslint*
+/js/whole.js

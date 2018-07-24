@@ -9,15 +9,10 @@ const start = getClick('start'),
       strict = getClick('setting');
 
 /* Game JS Variables */
-const colorPairs = { //Key colours
-  'blue-key': 0,
-  'red-key': 1,
-  'green-key': 2,
-  'yellow-key': 3
-}
+
 const maxGameLevel = 5;
 let gameLevel = 0; // Game 'rounds' if that helps
-let gameStrict = "1";  // We use this to change the game from Strict to normal
+let gameStrict = false;  // We use this to change the game from Strict to normal
 let gameOn = false;
 let simonReTries = getSimonTries();
 
@@ -31,7 +26,6 @@ let keyPressed;
 function initGame(){
 //Simon Says Keys aren't show until StartBtn is clicked
   if(gameOn === false) {
-    //console.clear()
     gameOn = true;
     makeClickableKeys()
     createGameSequence();

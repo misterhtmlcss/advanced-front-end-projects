@@ -6,38 +6,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Simon Game</title>
   <link rel="stylesheet" href="scss/main.css">
-  <link rel="stylesheet" href="scss/font.css">
-  <link rel="stylesheet" href="scss/buttons.css">
+
 </head>
 <body>
-<div class="container">
-  <div class="top">
-    <div id="help">You need to click the Green Button to start!</div>
-    <h1 class="title">Welcome to our Simple Simon Game</h1> <!-- Title above the Central Console -->
-    <div class="command-module">
-      <div class="btns">
-        <div class="btn" id="start" data-key="5">Start</div>
-        <div class="btn" id="setting" data-key="6">Easy</div>
+<div class="centerAll">
+  <div class="container">
+    <div class="top">
+      <h1 class="title">Welcome to our Simple Simon Game</h1> <!-- Title above the Central Console -->
+      <div class="command-module">
+        <div class="btns">
+          <div class="btn" id="start" data-key="5">Start</div>
+          <div class="btn" id="setting" data-key="6">Easy</div>
+        </div>
+        <div id="help" class="user-level">You need to click the Green Button to start!</div>
+        <div id="counter" class="user-level disable">Level</div>
       </div>
-      <div id="counter" class="user-level disable">Level</div>
+    </div>
+    <div class="bottom disable" id="keys-list">
+      <div class="keys" id="blue-key" data-key="1"></div>
+      <div class="keys" id="red-key" data-key="2"></div>
+      <div class="keys" id="green-key" data-key="3"></div>
+      <div class="keys" id="yellow-key" data-key="4"></div>
     </div>
   </div>
-  <div class="bottom disable" id="keys-list">
-    <div class="keys" id="blue-key" data-key="1"></div>
-    <div class="keys" id="red-key" data-key="2"></div>
-    <div class="keys" id="green-key" data-key="3"></div>
-    <div class="keys" id="yellow-key" data-key="4"></div>
-  </div>
 </div>
-<script src="js/interactions.js"></script>
-<script src="js/game.js"></script>
-<script src="js/utilities.js"></script>
-<script src="js/index.js"></script>
+<script src="js/whole.js"></script>
+
 <audio data-key="1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
 <audio data-key="2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
 <audio data-key="3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
 <audio data-key="4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
-<audio data-key="5" src="/mp3/failure.mp3"></audio> <!-- Tumbone mocking -->
-<audio data-key="6" src="/mp3/phone-off-hook.mp3"></audio><!-- Nooooo -->
 </body>
 </html>

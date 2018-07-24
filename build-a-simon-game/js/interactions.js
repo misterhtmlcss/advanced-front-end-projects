@@ -25,14 +25,11 @@ function makeClickableKeys () {
 // Play audio when there are game interactions
 function soundPlayer(keySoundId, timeOut){
   if(timeOut === undefined){
-    timeOut = 2000;
+    timeOut = 500;
   }
-  console.log('before',keySoundId.currentTime)
-  keySoundId.currentTime = 0; // Will rewind sound for multiple clicks
-
+  keySoundId.currentTime = 0; // Rewinds sound for multiple clicks
   keySoundId.play(); //Play() Using Audio Method
   setTimeout(() => {
     keySoundId.pause();
-    console.log('setTimeOut',keySoundId.currentTime)
   }, timeOut);
 }

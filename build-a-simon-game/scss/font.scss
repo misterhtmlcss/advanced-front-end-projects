@@ -3,10 +3,23 @@
 
 // Font decisions
 .title {
-  margin: 20px;
   text-align: center;
 }
 .user-level {
-  font-size: 1.3rem;
+  display: block;
+  color: white;
+  width: 100vw;
+  text-align: center;
+  padding: 10px;
   margin: 10px;
+  text-shadow:$primary-text-shadow,
+  1px 1px #333;
 }
+#help {
+  background-color: $primary-red;
+}
+
+#counter {
+  background-color: goldenrod;
+}
+

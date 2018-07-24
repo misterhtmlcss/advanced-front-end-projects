@@ -27,7 +27,7 @@ function checkNum(key) {
   if(key){
     if(userSequence.length <= gameSequence.length){
       if (key !== gameSequence[gameLevel]){
-        if(gameStrict === "-1"){
+        if(gameStrict === true){
           console.log('gameover:', key, gameSequence[gameLevel])
           help.textContent = 'Game Over! Would you like to try again? If so, click Reset and then Start to begin.'
           start.textContent = 'Game Over'
@@ -68,53 +68,21 @@ function simonHelper() {
 function simonPlayer() {
   const position = userSequence.length;
   const playListArr = gameSequence.slice(0, position+1);  // Need plus 1 to advance the game for the user.
-  const playListSize = playListArr.length
-  let idx = 0
-
-  if (userSequence.length === 0){
-    // Play first key
-    const firstKey = gameSequence[0]
-    soundPlayer(queryClick(`audio[data-key="${firstKey}"]`))
-    toggleClass(firstKey)
-    // Wait for user to click.
-    //User needs to click button
-  } else {
-
-    /* function doSetTimeout(idx) {
-      setTimeout(() => {
-        soundPlayer(queryClick(`audio[data-key="${playListArr[idx]}"]`))
-        //toggleClass(playListArr[idx])
-      }, 2000);
-    }
-    for (idx; idx < playListSize; idx++){
-      doSetTimeout(idx);
-      //console.log('forloop', idx, playListSize);
-    } */
-    function timer (idx){
-      setInterval(()=>{
-        soundPlayer(queryClick(`audio[data-key="${playListArr[idx]}"]`))
-        idx++
-        if(idx === playListSize){
-        }
-      }, 2000)
-      clearInterval()
-    }
-    timer()
-    //console.log('simonPlayer:', position, playListArr, playListSize)
-  }
+  animateSimon(playListArr) // Send array!
 }
 
+function animateSimon(playListArr) {
+  console.log('Animate playListArr', playListArr);
+  for (let idx = 0; idx < playListArr.length; ++idx) {
+    setTimeout(() => {
+      setTimeout(() => {
+        console.log(`playListArr[idx], ${playListArr[idx]}, ${idx}`);
+        soundPlayer(queryClick(`audio[data-key="${playListArr[idx]}"]`))
+      }, 500 * idx);
+    }, 500 + (500 * idx));
+  };
+};
 
 
 
 
-
-/* function loop (idx, playList) {
-    setTimeout(function () {
-      soundPlayer(queryClick(`audio[data-key="${i}"]`))
-      toggleClass(i)
-      if (i++) loop(i);      //  decrement i and call loop again if i > 0
-    }, 1000)
- });
- loop(i, playList)
-*/

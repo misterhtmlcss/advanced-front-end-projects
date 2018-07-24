@@ -1,22 +1,30 @@
 //Global variables
 @import "_variables.scss";
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  //border-style:solid;
 }
 // Main structure
 html, body {
   min-height: 100vh;
-  width: 100%;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+.centerAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(10%);
 }
 
 .container {
-  min-width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .top {
@@ -32,24 +40,10 @@ html, body {
   display: flex;
   justify-content: space-evenly;
 }
-#help {
-  display: block;
-  background-color: $primary-red;
-  color: white;
-  width: 100%;
-  text-align: center;
-  padding: 5px;
-}
 
 .command-module {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.btns {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -59,38 +53,6 @@ html, body {
   border: 0 1px 0 0 solid grey;
 }
 
-.keys {
-  height: 200px;
-  width: 20%;
-  border-radius: 10%;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6),
-              -1px -1px 2px rgba(0, 0, 0, 0.6);
-}
-
-// Buttons
-.btn {
-  width: 160px;
-  margin: 10px;
-  padding: 15px;
-  color: white;
-  text-align: center;
-  font-size: 1.4rem;
-  border-radius: 10%;
-  text-shadow: $primary-text-shadow;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3),
-              -1px -1px 2px rgba(0, 0, 0, 0.3);
-  &:hover {
-    transform: scale(1.03);
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  }
-}
-.btn:nth-of-type(1){
-  background-color: $primary-green;
-
-}
-.btn:nth-of-type(2){
-  background-color: blue;
-}
 
 
 // Data-key IDs for working with JS functions
@@ -111,5 +73,5 @@ html, body {
 }
 
 
-@import "buttons.scss";
 @import "font.scss";
+@import "buttons.scss";
