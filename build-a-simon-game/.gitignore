@@ -2,8 +2,3 @@
 *archive
 /scss/*.css*
 .eslint*
-
-js/game.js
-js/index.js
-js/interactions.js
-js/util*.js
