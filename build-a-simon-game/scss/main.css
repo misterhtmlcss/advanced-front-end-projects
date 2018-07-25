@@ -1,0 +1,196 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.centerAll {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transform: translateY(10%);
+          transform: translateY(10%);
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.top {
+  max-height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bottom {
+  max-height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.command-module {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.playing {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  border: 0 1px 0 0 solid grey;
+}
+
+#keys-list > [data-key="1"] {
+  background-color: blue;
+}
+
+#keys-list > [data-key="2"] {
+  background-color: #ff0000;
+}
+
+#keys-list > [data-key="3"] {
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+#keys-list > [data-key="4"] {
+  background-color: goldenrod;
+}
+
+.title {
+  text-align: center;
+}
+
+.user-level {
+  display: block;
+  color: white;
+  width: 100vw;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), 1px 1px #333;
+}
+
+#help {
+  background-color: #ff0000;
+}
+
+#counter {
+  background-color: goldenrod;
+}
+
+.disable {
+  pointer-events: none;
+  cursor: default;
+}
+
+.keys, #start, #setting {
+  cursor: pointer;
+}
+
+.keys {
+  height: 200px;
+  width: 20%;
+  border-radius: 10%;
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), -1px -1px 2px rgba(0, 0, 0, 0.6);
+          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), -1px -1px 2px rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 3rem;
+}
+
+.btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btn {
+  width: 160px;
+  margin: 4px;
+  padding: 12px;
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 10%;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), -1px -1px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3), -1px -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  -webkit-transform: scale(1.03);
+          transform: scale(1.03);
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.btn:nth-of-type(1) {
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+.btn:nth-of-type(2) {
+  background-color: blue;
+}
+/*# sourceMappingURL=main.css.map */
