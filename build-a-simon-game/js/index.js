@@ -225,8 +225,3 @@ keys.addEventListener('click', keysPressed)
 start.addEventListener('click', initGame)
 // Strict Button: Needs function
 strict.addEventListener('click', strictPressed)
-
-// Function hide keys until StartButton pressed
-
-
-
