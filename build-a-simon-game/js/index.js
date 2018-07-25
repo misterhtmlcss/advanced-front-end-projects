@@ -1,5 +1,4 @@
 /* Game HTML Elements */
-// Hey from Ben
 const start = getClick('start'),
       reset = getClick('reset'),
       counter = getClick('counter'),
