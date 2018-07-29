@@ -82,7 +82,7 @@ function simonHelps() {
   } else {
     console.log('simonHelps', simonReTries)
     simonPlayer(gameLevel)
-    help.innerHTML = `You have only so many chances. <br /> Chances Remaining: ${simonReTries}`
+    help.innerHTML = `Try again.. <br /> <span class="shade">Chances Remaining: ${simonReTries}</span>`
   }
 }
 // Game ends: Call endThenReset() to reboot
