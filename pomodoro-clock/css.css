@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: #e1e2ea;
+}
+
+#container {
+  width: 320px;
+  margin-top: 10px;
+}
+
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.box button {
+  font-size: 2rem;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+  margin-left: 16px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+#startBtn {
+  background-color: green;
+}
+
+#startBtn:hover {
+  background-color: #3cff3c;
+}
+
+#killClock {
+  background-color: #D7263D;
+}
+
+#killClock:hover {
+  background-color: #e05063;
+}
+
+#resetClock {
+  background-color: #262B89;
+}
+
+#resetClock:hover {
+  background-color: #6369d4;
+}
+
+.counter {
+  height: 200px;
+  border: 1px white solid;
+  border-radius: 0 0 20px 0;
+  background-color: #D7263D;
+}
+
+.counter, .title, .btn {
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+h1, h2, p, input, button, .biggest, #alerts, #endTime {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.39), -1px -1px 2px rgba(0, 0, 0, 0.39);
+  text-align: center;
+  color: #FFFFFF;
+}
+
+h1, h2, p {
+  background-color: #F46036;
+  margin-bottom: 0;
+}
+
+.biggest {
+  font-size: 5rem;
+}
+
+input {
+  width: calc(320px/2);
+  font-size: 5rem;
+  border: 1px darkgray solid;
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+input:nth-of-type(1) {
+  background-color: #262B89;
+}
+
+input:nth-of-type(2) {
+  border-radius: 0 0 20px 0;
+  background-color: #D82940;
+}
+/*# sourceMappingURL=css.css.map */
