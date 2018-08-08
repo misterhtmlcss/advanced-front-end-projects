@@ -22,34 +22,54 @@ const maxPlays = 8
 const setupBoard = [[0,1,2], [3,4,5], [6,7,8]];
 // Winning combinations
 const winningCombo = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [2,4,6]]
+  [0,1,2],   // Top row win
+  [3,4,5],   // middle row win
+  [6,7,8],   // bottom row win
+  [0,3,6],   // left column win
+  [1,4,7],   // center column win
+  [2,5,8],   // right column win
+  [0,4,8],   // top left to bottom right win
+  [2,4,6]    // top right to bottom left win
+]
+
+// Remaining Turns Counter
+const turns = document.getElementById("round");
+const span = turns.getElementsByTagName("span");
+
 // Variables for mutation
-let playerOne, playerAi, gameBoard;
-
+let playerOne, gameAi, gameState, gameBoard, gameRound, tempClickValue;
 /* Update Span for Possible Moves/Rounds Remaining */
-const round = document.getElementById("round");
-const span = round.getElementsByTagName("span");
 
-const boxes = Array.from(document.querySelectorAll('.grid-item'))
-const resetBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let playerOneScore, playerAiScore, found;
-let gameRound = 0;
-let board = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Change values for Selection
-let roundWonBy = 0 // Who won the round; Tie:0, HumanWin:1, AIWin: -1
-let winner = false; // After 3 rounds; overall winner is declared
-let tempClickValue; // Value of last user selection goes here.
+// User needs to select a letter X or O
+//const menu = document.getElementById('menu')
+//const input = document.querySelectorAll('input[name="group"]:checked')//.value
+
+// Event listner to start the game
+const startBtn = document.getElementById('btn')
+startBtn.addEventListener('click', captureUserSelection)
 
 
-// Detect a user click then record into an array which square
-// Check a boxes that are clicked
-boxes.forEach(box => { box.addEventListener('click',getSelectionValue)})
+// User needs to then click start for game to begin.
+function init () {
+  gameState = true
+}
+
+//input.addEventListener('click', captureUserSelection) // Don't need!! Collect user selection on game start
+function captureUserSelection(input) {
+  playerOne = document.querySelector('input[name="group"]:checked').value
+  if(playerOne === 'x'){
+    gameAi = 'y'
+  } else {
+    gameAi = 'x'
+  }
+  console.log(playerOne, gameAi)
+  init(playerOne)
+  return
+}
+
+
+
+/*
 
 // Value of box selected
 function getSelectionValue (val){
@@ -92,17 +112,12 @@ function trackRounds () { // Keep track of the round being played
 function randomNumber(){
   let choice = Math.floor(Math.random() * Math.floor(10))
 
-
   found = board.find(function(choice) {
     if (board[choice] === !NaN) {
       console.log("found a number")
     }
 });
 
-
-
-  if (choice === )
-  return ;
 }
 
 // Utility Scripts for testing
@@ -110,32 +125,13 @@ function randomNumber(){
 function testCall (...args) {
   console.log(...args)
 }
-/*
-function winning(board, player){
-if (
-  (board[0] == player && board[1] == player && board[2] == player) ||
-  (board[3] == player && board[4] == player && board[5] == player) ||
-  (board[6] == player && board[7] == player && board[8] == player) ||
-  (board[0] == player && board[3] == player && board[6] == player) ||
-  (board[1] == player && board[4] == player && board[7] == player) ||
-  (board[2] == player && board[5] == player && board[8] == player) ||
-  (board[0] == player && board[4] == player && board[8] == player) ||
-  (board[2] == player && board[4] == player && board[6] == player)
-  )
-  { return true; } else
-  { return false; }
-}
 
-// Mike's code
-if (
-    (board[0][0] === symbol && board[0][1] === symbol && board[0][2] === symbol) ||
-    (board[1][0] === symbol && board[1][1] === symbol && board[1][2] === symbol) ||
-    (board[2][0] === symbol && board[2][1] === symbol && board[2][2] === symbol) ||
-    (board[0][0] === symbol && board[1][0] === symbol && board[2][0] === symbol) ||
-    (board[0][1] === symbol && board[1][1] === symbol && board[2][1] === symbol) ||
-    (board[0][2] === symbol && board[1][2] === symbol && board[2][2] === symbol) ||
-    (board[0][0] === symbol && board[1][1] === symbol && board[2][2] === symbol) ||
-    (board[0][2] === symbol && board[1][1] === symbol && board[2][0] === symbol)
-  );
+// Collect all boxes into an array
+const boxes = Array.from(document.querySelectorAll('.grid-item'))
+// Detect a user click then record into an array which square
+// Check a boxes that are clicked
+boxes.forEach(box => { box.addEventListener('click',getSelectionValue)})
+
+
 
 */
