@@ -1,6 +1,22 @@
 // Variables
 $blue: #2196F3;
 
+//Fonts
+h1 {
+  margin-bottom: 0;
+}
+p {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+p>span {
+  background-color: red;
+  padding: 5px;
+  font-size: 1.5rem;
+  padding-top: 5px;
+}
+
+//Main
 html, body {
   background-color: $blue;
   font-size: 16px;
@@ -160,16 +176,8 @@ input {
 .noshadow {
   text-shadow: none;
 }
-h1 {
-  margin-bottom: 0;
-}
-p {
-  margin-bottom: 30px;
-  font-size: 1.2rem;
-}
-p>span {
-  background-color: red;
-  padding: 5px;
-  font-size: 1.5rem;
-  padding-top: 5px;
+
+.disable {
+  pointer-events: none;
+  cursor: default;
 }
