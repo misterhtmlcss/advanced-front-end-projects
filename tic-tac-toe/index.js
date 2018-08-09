@@ -3,8 +3,6 @@ User Story: I can play a game of Tic Tac Toe with the computer.
 User Story: My game will reset as soon as it's over so I can play again.
 User Story: I can choose whether I want to play as X or O.
 */
-/* // Game board layout
-const setupBoard = [[0, 1, 2], [3, 4, 5], [6, 7, 8]] */
 /* eslint-disable */
 // Winning combinations
 const winningCombo = [
@@ -19,7 +17,7 @@ const winningCombo = [
 ];
 /* eslint-enable */
 // The max number of rounds per game
-const maxPlays = 8
+const maxPlays = 9
 // Radio buttons
 const radioBtns = document.getElementById('menu')
 // Setup Start Button
@@ -34,23 +32,27 @@ const container = document.querySelector('.grid-container')
 // User needs to then click start for game to begin.
 const gameState = {
   "state": false,
+  "currentPlayer": "",
   "startState": function (bool) {
     this.state = bool
     container.classList.remove('disable')
+    remainingPlays = maxPlays
     captureUserSelection()
   },
   "resetState": function (bool) {
     this.state = bool
     turnSpan.textContent = "9"
+    gameBoard = new Array(9)
     boxes.forEach((box) => {
       box.textContent = ''
     })
     radioBtns.style.display = ""
-    console.clear()
+    // console.clear()
   }
 }
 // Variables for mutation
-let gameAi, gameBoard, playerOne, tempClickValue
+let clickValue, gameAi, humanPlayer, remainingPlays
+let gameBoard = new Array(9)
 
 function loadListners () {
   // Make squares unclickable onload, until StartBtn clicked.
@@ -72,20 +74,67 @@ function statusCheck() {
 // Value of box selected
 function getSelectionValue (val) {
   // stores data- value
-  tempClickValue = val.target.dataset.square
-  boxes[tempClickValue].innerHTML = `<div class="gameInput">${playerOne}</div>`
-  console.log(`Player clicked this value: ${tempClickValue}`)
+  clickValue = val.target.dataset.square
+  pubVal(clickValue, humanPlayer)
+  storeVal(clickValue, humanPlayer)
 }
+
+function pubVal(val, user) {
+  remainingPlays--
+  console.log(gameBoard, remainingPlays)
+  boxes[val].innerHTML = `<div class="gameInput">${user}</div>`
+}
+
+function storeVal(clickedValue, playerId) {
+  // Using the fixed position of the array, place the playerId ex X at position clickedValue
+  gameBoard[clickedValue] = playerId
+  aiTurn()
+}
+
+function aiTurn () {
+  const aiChoice = randomNumber()
+  if (gameBoard[aiChoice] === null) {
+    gameBoard[aiChoice] = gameAi
+    pubVal(aiChoice, gameAi)
+  } else {
+    aiTurn()
+    console.log('called aiTurn again', aiChoice)
+  }
+}
+
 
 // User needs to select a letter X or O
 function captureUserSelection () {
-  playerOne = document.querySelector('input[name="group"]:checked').value
-  if (playerOne === 'x') {
-    gameAi = 'y'
+  humanPlayer = document.querySelector('input[name="group"]:checked').value
+  if (humanPlayer === 'X') {
+    gameAi = 'Y'
   } else {
-    gameAi = 'x'
+    gameAi = 'X'
+    aiTurn(gameAi)
   }
 }
+
+/* Tests if game Won */
+function testWin(val) {
+  if (
+    gameBoard[0] === val && gameBoard[1] === val && gameBoard[2] === val ||
+    gameBoard[3] === val && gameBoard[4] === val && gameBoard[5] === val ||
+    gameBoard[6] === val && gameBoard[7] === val && gameBoard[8] === val ||
+    gameBoard[0] === val && gameBoard[3] === val && gameBoard[6] === val ||
+    gameBoard[1] === val && gameBoard[4] === val && gameBoard[7] === val ||
+    gameBoard[2] === val && gameBoard[5] === val && gameBoard[8] === val ||
+    gameBoard[0] === val && gameBoard[4] === val && gameBoard[8] === val ||
+    gameBoard[2] === val && gameBoard[4] === val && gameBoard[6] === val
+  ) {
+    // console.log(`${val} wins!`)
+
+    // NOte?
+
+    // disableGameBoard()
+  }
+}
+
+
 
 // Generates Computer moves
 function randomNumber () {
@@ -93,27 +142,3 @@ function randomNumber () {
 }
 
 window.addEventListener("load", loadListners)
-
-/* eslint-disable */
-/*
-// ***** TESTING OUT OBSERVERS ***** //
-var observer = new MutationObserver(function(mutations) {
-	// For the sake of...observation...let's output the mutation to console to see how this all works
-	mutations.forEach(function(mutation) {
-    console.log(mutation.type, mutation);
-	});
-});
-
-// Notify me of everything!
-var observerConfig = {
-	attributes: true,
-	childList: true,
-	characterData: true
-};
-
-// Node, config
-// In this case we'll listen to all changes to body and child nodes
-var targetNode = document.gameState
-observer.observe(targetNode, observerConfig);
-*/
-/* eslint-enable */
