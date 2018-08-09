@@ -1,0 +1,14 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Roger Kondrat",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.4.2"
+  }
+}

@@ -4,112 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css">
   <link rel="stylesheet" href="css.css">
   <title>Tic Tac Toe</title>
 </head>
 <body>
-
-<div class="wrapper">
-  <div class="round">Round: 0</div>
-  <div class="score">Your Score: 0 || Computer Score: 0</div>
-  <div class="grid-container">
-    <div class="grid-item letter-x" data-location="1"></div>
-    <div class="grid-item letter-y" data-location="2"></div>
-    <div class="grid-item" data-location="3"></div>
-    <div class="grid-item" data-location="4"></div>
-    <div class="grid-item" data-location="5"></div>
-    <div class="grid-item" data-location="6"></div>
-    <div class="grid-item" data-location="7"></div>
-    <div class="grid-item" data-location="8"></div>
-    <div class="grid-item" data-location="9"></div>
+<div class="header">
+  <div class="title">
+    <h1>Tic Tac Toe</h1>
+    <div id="round" class="round"><p>Remaining Choices: <span>9</span></p></div>
   </div>
-    <div class="grid-container-btn">
-      <button type="button" class="grid-btn">Start</button>
+  <div class="menu" id="menu">
+    <p>Do you want to be X or O?</p>
+    <div class="choose">
+      <label for="select-x">X</label>
+      <input type="radio" name="group" id="x-select" value="x" checked="true">
+      <label for="select-x">Y</label>
+      <input type="radio" name="group" id="y-select" value="y">
     </div>
-</div> <span class="underline"></span>
-<div class="footnote">Built with CSS Grid and Flexbox by misterhtmlcss</div>
-
-
-<!-- <script src="index.js"></script> -->
-<script>
-//let boardh = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-//let boardv =[[1, 4, 7], [2, 5, 8], [3, 6, 9]];
-const round = document.querySelector('.round')
-const score = document.querySelector('.score')
-const boxes = Array.from(document.querySelectorAll('.grid-item'))
-const resetBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-let playerOneScore, playerAiScore, found;
-let gameRound = 0;
-let board = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Change values for Selection
-let roundWonBy = 0 // Who won the round; Tie:0, HumanWin:1, AIWin: -1
-let winner = false; // After 3 rounds; overall winner is declared
-let tempClickValue; // Value of last user selection goes here.
-
-// Detect a user click then record into an array which location
-// Check a boxes that are clicked
-boxes.forEach(box => { box.addEventListener('click',getSelectionValue)})
-
-// Value of box selected
-function getSelectionValue (val){
-  tempClickValue = val.target.dataset.location // Click data- value
-  if(val.isTrusted === true){
-    testCall(`Player clicked this value: ${tempClickValue}`)
-  } else {
-    testCall(`Computer clicked this value: ${randomNumber()}`)
-  }
-}
-
-
-// AI Functions
-
-
-// This function needs to iterate through both it's previous selections for the AI and the user selections and then resolve a choice.
-function aiBoxPicker () {
-  //if()
-}
-
-// Game tools
-function keepScore () {  // Wins collected after each round
-  if (gameRound > 0 || gameRound <=5) {
-// For this function it receives the winer identity and then increments based on that identity
-    round.innerHTML = //`${***WINNER e.g. Player or AI}: ${playerOneScore++|| playerAiScore++}`
-  }
-}
-
-function roundWinner () { // Calls both keepScore and trackRounds to increment their counters
-  if (winner) {
-    trackRounds()
-  }
-}
-
-function trackRounds () { // Keep track of the round being played
-  if (gameRound > 0 || gameRound <=5) {
-    round.innerHTML = `Round: ${gameRound++}`;
-  }
-}
-// Generates Computer moves
-function randomNumber(){
-  let choice = Math.floor(Math.random() * Math.floor(10))
-
-
-  found = board.find(function(choice) {
-    if (board[choice] === !NaN) {
-      console.log("found a number")
-    }
-});
-
-
-
-  if (choice === )
-  return ;
-}
-
-// Utility Scripts for testing
-
-function testCall (...args) {
-  console.log(...args)
-}
-</script>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="grid-container">
+    <div class="grid-item" data-square="0"></div>
+    <div class="grid-item" data-square="1"></div>
+    <div class="grid-item" data-square="2"></div>
+    <div class="grid-item" data-square="3"></div>
+    <div class="grid-item" data-square="4"></div>
+    <div class="grid-item" data-square="5"></div>
+    <div class="grid-item" data-square="6"></div>
+    <div class="grid-item" data-square="7"></div>
+    <div class="grid-item" data-square="8"></div>
+  </div>
+  <div class="grid-container-btn">
+    <button type="button" class="grid-btn" id="btn" >Start</button>
+  </div>
+</div>
+<div class="footnote">
+  <p> Built with CSS Grid and Flexbox by:</p>
+  <a class='noshadow' href="http://github.com/misterhtmlcss">misterhtmlcss</a>
+</div>
+<script src="index.js"></script>
 </body>
 </html>
 <!-- Emmet construction help - h$[title=item$]{Header $}*3 -->
