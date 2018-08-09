@@ -12,13 +12,13 @@
 <div class="header">
   <div class="title">
     <h1>Tic Tac Toe</h1>
-    <div id="round" class="round"><p>Possible Moves Remaining: <span>9</span></p></div>
+    <div id="round" class="round"><p>Remaining Choices: <span>9</span></p></div>
   </div>
   <div class="menu" id="menu">
     <p>Do you want to be X or O?</p>
     <div class="choose">
       <label for="select-x">X</label>
-      <input type="radio" name="group" id="x-select" value="x">
+      <input type="radio" name="group" id="x-select" value="x" checked="true">
       <label for="select-x">Y</label>
       <input type="radio" name="group" id="y-select" value="y">
     </div>
@@ -26,6 +26,7 @@
 </div>
 <div class="wrapper">
   <div class="grid-container">
+    <div class="grid-item" data-square="0"></div>
     <div class="grid-item" data-square="1"></div>
     <div class="grid-item" data-square="2"></div>
     <div class="grid-item" data-square="3"></div>
@@ -34,7 +35,6 @@
     <div class="grid-item" data-square="6"></div>
     <div class="grid-item" data-square="7"></div>
     <div class="grid-item" data-square="8"></div>
-    <div class="grid-item" data-square="9"></div>
   </div>
   <div class="grid-container-btn">
     <button type="button" class="grid-btn" id="btn" >Start</button>
