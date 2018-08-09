@@ -49,10 +49,11 @@ html, body {
   border-radius: 90%;
 }
 .grid-item {
-  padding: 25px;
-  font-size: 3rem;
+  //padding: 25px;
+  font-size: 7rem;
   text-align: center;
   text-shadow: 1px 1px 2px lightgray;
+  border: 1px white dotted;
   &:hover {
     color: $blue;
     text-shadow: 1px 1px 1px black;
@@ -88,10 +89,6 @@ html, body {
   font-size: 3rem;
   text-align: center;
   text-shadow: 1px 1px white, 0px -1px #444;
-}
-
-[data-square] {
-  border: 1px white dotted;
 }
 
 .yc {
@@ -148,9 +145,8 @@ html, body {
   margin-top: 16px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  //flex-basis: 300px;
   align-items: flex-end;
+  flex-grow: 1;
 }
 .choose {
   display: flex;
@@ -180,4 +176,10 @@ input {
 .disable {
   pointer-events: none;
   cursor: default;
+}
+
+.gameInput {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

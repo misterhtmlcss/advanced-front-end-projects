@@ -58,10 +58,10 @@ html, body {
 }
 
 .grid-item {
-  padding: 25px;
-  font-size: 3rem;
+  font-size: 7rem;
   text-align: center;
   text-shadow: 1px 1px 2px lightgray;
+  border: 1px white dotted;
 }
 
 .grid-item:hover {
@@ -105,10 +105,6 @@ html, body {
   font-size: 3rem;
   text-align: center;
   text-shadow: 1px 1px white, 0px -1px #444;
-}
-
-[data-square] {
-  border: 1px white dotted;
 }
 
 .yc {
@@ -191,12 +187,12 @@ html, body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .choose {
@@ -233,5 +229,12 @@ input {
 .disable {
   pointer-events: none;
   cursor: default;
+}
+
+.gameInput {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 /*# sourceMappingURL=css.css.map */
